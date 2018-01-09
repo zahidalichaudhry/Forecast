@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
 
-    tools:context="com.example.zahidali.forecast_final.NaviDrawer">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_Home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_Categories"
+            android:icon="@drawable/ic_photo_library_black_24dp"
+            android:title="@string/nav_categories" />
+        <item
+            android:id="@+id/nav_Bag"
+            android:icon="@drawable/ic_local_movies_black_24dp"
+            android:title="@string/nav_Bag" />
 
-            />
+        <item
+            android:id="@+id/nav_Wishlist"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/nav_Wishlist" />
 
-
-
-
-
-
-
-
-
+        <item
+            android:id="@+id/nav_Myorder"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_Myorder" />
+        <item
+            android:id="@+id/nav_Help"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_Help" />
+        <item
+            android:id="@+id/nav_About"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_Help" />
+        <item
+            android:id="@+id/nav_Contact"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_Contact" />
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_settings" />
     </group>
 
 </menu>
