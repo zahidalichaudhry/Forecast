@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Sing_up" />
+        <activity android:name=".Activity.Sing_up" />
         <activity android:name=".Splash_Screen" />
         <activity android:name=".NaviDrawer"></activity>
     </application>

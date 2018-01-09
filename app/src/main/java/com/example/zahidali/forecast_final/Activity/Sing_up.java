@@ -1,7 +1,9 @@
-package com.example.zahidali.forecast_final;
+package com.example.zahidali.forecast_final.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.zahidali.forecast_final.R;
 
 public class Sing_up extends AppCompatActivity {
 
