@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Forecast_Final</string>
+    <string name="Navigation_drawer_open">Open navigation drawer</string>
+    <string name="Navigation_drawer_close">Close navigation drawer</string>
+    <string name="OpenDrawer">Open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_categories">Categories</string>
+    <string name="nav_bag">Bag</string>
+    <string name="nav_wishlist">Wishlist</string>
+    <string name="nav_myorder">Myorder</string>
+    <string name="nav_help">Help</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="nav_contact">Contact</string>
+    <string name="nav_logout">Logput</string>
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Categories</item>
+        <item>Bag</item>
+        <item>Wishlist</item>
+        <item>Myorder</item>
+        <item>Help</item>
+        <item>About us</item>
+        <item>Contact</item>
+        <item>Logout</item>
+
+    </string-array>
 </resources>
