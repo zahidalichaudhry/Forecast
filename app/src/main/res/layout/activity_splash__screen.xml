@@ -3,14 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/splash2"
     android:layout_height="match_parent"
-    tools:context="com.example.zahidali.forecast_final.Splash_Screen">
-
-    <ImageView
+    tools:context="com.example.zahidali.forecast_final.Activity.Splash_Screen">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imgView"
-        android:background="@drawable/splash2"
-        />
-
+        android:orientation="vertical"
+        android:background="@color/tranpblack">
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="350dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="198dp"
+            android:background="@drawable/forecast21" />
+    </LinearLayout>
 </RelativeLayout>
