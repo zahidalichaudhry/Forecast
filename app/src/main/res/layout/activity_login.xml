@@ -6,7 +6,6 @@
     android:background="@drawable/splash2"
     android:layout_height="match_parent"
     tools:context="com.example.zahidali.forecast_final.Activity.Login">
-    <include
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,22 +13,19 @@
         android:orientation="vertical">
         <ImageView
             android:layout_width="250dp"
-            android:layout_marginTop="50dp"
             android:layout_height="110dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/forecast21"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="73dp" />
+            android:layout_marginTop="112dp"
+            android:background="@drawable/forecast21" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="88dp"
+            android:layout_marginBottom="50dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp">
 

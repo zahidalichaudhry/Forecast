@@ -33,4 +33,9 @@ public class Config {
     public static final String SU_KEY_FISTANME="firstname";
     public static final String SU_KEY_LASTNAME="lastname";
     public static final String SU_KEY_PASSWORD="password";
+
+
+    public static final String URL_All_Categories= "http://192.168.1.11/forecast/getCategories.php";
+    public static final String URL_Sub_Categories= "http://192.168.1.11/forecast/getSubCategories.php";
+    public static final String URL_ALL_PRODUCTS= "http://192.168.1.11/forecast/getAllProductsByCategories.php";
 }

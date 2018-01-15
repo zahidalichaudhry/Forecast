@@ -1,10 +1,7 @@
 package com.example.zahidali.forecast_final.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -21,11 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.zahidali.forecast_final.Config;
-import com.example.zahidali.forecast_final.HandlerClass.RequestHandler;
 import com.example.zahidali.forecast_final.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;

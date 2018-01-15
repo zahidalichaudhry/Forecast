@@ -98,8 +98,9 @@ public class Login extends AppCompatActivity {
             public void onResponse(String response) {
 
                 pd.dismiss();
+
+
                 try {
-                    // JSONArray arrr = new JSONArray(response);
                     JSONObject object = new JSONObject(response);
                     JSONObject quoteId = object.getJSONObject("quoteID");
                     String firstname = quoteId.getString("customer_firstname");
