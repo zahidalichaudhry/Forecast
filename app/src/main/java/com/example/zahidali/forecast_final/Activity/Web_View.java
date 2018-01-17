@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,6 +22,9 @@ public class Web_View extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_web__view);
         register=(WebView)findViewById(R.id.webView);
         progress=(ProgressBar)findViewById(R.id.progressBar);
@@ -43,5 +48,11 @@ public class Web_View extends AppCompatActivity {
                 setTitle(view.getTitle());
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Web_View.this,Home_Catogeries.class);
+        startActivity(intent);
     }
 }

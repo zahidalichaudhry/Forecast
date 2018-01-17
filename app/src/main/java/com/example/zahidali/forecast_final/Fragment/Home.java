@@ -30,7 +30,9 @@ import java.util.HashMap;
 public class Home extends Fragment implements BaseSliderView.OnSliderClickListener{
         SliderLayout sliderLayout ;
       static String path0;
+      String menimage,womenimage,saleimage;
     static String path1;
+    ImageView men,women,sale;
         HashMap<String, String> HashMapForURL ;
     public Home() {
         // Required empty public constructor
@@ -46,7 +48,15 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
         path0="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/banner3.jpg";
         path1="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/13.jpg";
-
+        menimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/samllbanner.jpg";
+        womenimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/smallbanner2%20(1).jpg";
+        saleimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/probanner3.jpg";
+        men=(ImageView)view.findViewById(R.id.men);
+        women=(ImageView)view.findViewById(R.id.women);
+        sale=(ImageView)view.findViewById(R.id.sale);
+        Glide.with(getActivity()).load(menimage).into(men);
+        Glide.with(getActivity()).load(womenimage).into(women);
+        Glide.with(getActivity()).load(saleimage).into(sale);
 
         AddImagesUrlOnline();
 
@@ -59,8 +69,8 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
 
         HashMapForURL = new HashMap<String, String>();
 
-           HashMapForURL.put("Female", path0);
-           HashMapForURL.put("Male", path1);
+           HashMapForURL.put(" ", path0);
+           HashMapForURL.put("  ", path1);
            callSlider();
     }
     private void callSlider() {

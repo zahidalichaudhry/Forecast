@@ -51,11 +51,21 @@ public class Recycler_Adapter_Sub_catagories extends RecyclerView.Adapter<Recycl
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    String Subpart=WebUrl+"/"+arrayList.get(position).getName().toLowerCase();
+                if (arrayList.get(position).getName().equals("BLAZER"))
+                {
+                    String Subpart=WebUrl+"/"+"blazer-2".toLowerCase().replace(" ","-");
                     Intent intent = new Intent(activity,Sub_Categories.class);
                     intent.putExtra("id",arrayList.get(position).getCategory_id());
                     intent.putExtra("weburl",Subpart);
                     activity.startActivity(intent);
+                }else {
+                    String Subpart=WebUrl+"/"+arrayList.get(position).getName().toLowerCase().replace(" ","-");
+                    Intent intent = new Intent(activity,Sub_Categories.class);
+                    intent.putExtra("id",arrayList.get(position).getCategory_id());
+                    intent.putExtra("weburl",Subpart);
+                    activity.startActivity(intent);
+                }
+
 
 //
             }

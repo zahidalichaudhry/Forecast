@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +46,9 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         register = (TextView) findViewById(R.id.register);
         email = (EditText) findViewById(R.id.usrusr);
@@ -98,39 +103,45 @@ public class Login extends AppCompatActivity {
             public void onResponse(String response) {
 
                 pd.dismiss();
-
-
                 try {
-                    JSONObject object = new JSONObject(response);
-                    JSONObject quoteId = object.getJSONObject("quoteID");
-                    String firstname = quoteId.getString("customer_firstname");
-                    String lastname = quoteId.getString("customer_lastname");
-                    String email = quoteId.getString("customer_email");
-                    String userID=object.getString("userId");
-                    String Entity_ID=quoteId.getString("entity_id");
-                    //    String regions =   object.get("regions").toString();
+                    JSONObject invalid=new JSONObject(response);
+                    if (invalid.getString("status").equals("invalid"))
+                    {
+                        Toast.makeText(Login.this,"Invalid Useraname and Passwaord",Toast.LENGTH_LONG).show();
+                    }
+                    else if (invalid.getString("status").equals("valid")){
 
-                    //Creating a shared preference
-                    SharedPreferences sharedPreferences = Login.this.getApplicationContext().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            JSONObject quoteId = object.getJSONObject("quoteID");
+                            String firstname = quoteId.getString("customer_firstname");
+                            String lastname = quoteId.getString("customer_lastname");
+                            String email = quoteId.getString("customer_email");
+                            String userID=object.getString("userId");
+                            String Entity_ID=quoteId.getString("entity_id");
+                            //    String regions =   object.get("regions").toString();
 
-                    //Creating editor to store values to shared preferences
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                            //Creating a shared preference
+                            SharedPreferences sharedPreferences = Login.this.getApplicationContext().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
-                    //Adding values to editor
-                    editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
-                    editor.putString(Config.EMAIL_SHARED_PREF, user_email);
-                    editor.putString(Config.SHARED_PREF_FirstName, firstname);
-                    editor.putString(Config.SHARED_PREF_LastName, lastname);
-                    editor.putString(Config.SHARED_PREF_UserID, userID);
-                    editor.putString(Config.SHARED_PREF_EntityID,Entity_ID);
+                            //Creating editor to store values to shared preferences
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                    //Saving values to editor
-                    editor.commit();
+                            //Adding values to editor
+                            editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
+                            editor.putString(Config.EMAIL_SHARED_PREF, user_email);
+                            editor.putString(Config.SHARED_PREF_FirstName, firstname);
+                            editor.putString(Config.SHARED_PREF_LastName, lastname);
+                            editor.putString(Config.SHARED_PREF_UserID, userID);
+                            editor.putString(Config.SHARED_PREF_EntityID,Entity_ID);
 
-                    //Starting profile activity
-                    Intent intent = new Intent(Login.this.getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    //  JSONArray regionArray = object.getJSONArray("regions");
+                            //Saving values to editor
+                            editor.commit();
+
+                            //Starting profile activity
+                            Intent intent = new Intent(Login.this.getApplicationContext(), Home_Catogeries.class);
+                            startActivity(intent);
+                            //  JSONArray regionArray = object.getJSONArray("regions");
 
 //                    for (int i = 0; i < arrr.length(); i++) {
 //
@@ -150,14 +161,20 @@ public class Login extends AppCompatActivity {
 //                    spCategories.setAdapter(regionAdapter);
 
 
-                    // regionsMapList.add()
+                            // regionsMapList.add()
 
 
-                    //   String status = object.get("success").toString();
+                            //   String status = object.get("success").toString();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 // object.get("");
 
             }
@@ -197,7 +214,7 @@ public class Login extends AppCompatActivity {
 
         if (loggedIn) {
             //We will start the Profile Activity
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, Home_Catogeries.class);
             startActivity(intent);
         }
     }

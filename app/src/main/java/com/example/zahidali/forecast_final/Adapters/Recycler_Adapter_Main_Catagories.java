@@ -43,8 +43,8 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
 
     @Override
     public void onBindViewHolder(MyViewHolder holder,final int position) {
-        if (arrayList.get(position).getIs_active()=="1")
-        {
+//        if (arrayList.get(position).getIs_active()=="1")
+//        {
             holder.name.setText(arrayList.get(position).getName());
             holder.name.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,7 +52,7 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
                     int length=arrayList.get(position).getChild();
                     if (length!=0)
                     {
-                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName();
+                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName().toLowerCase().replace(" ","-");
                         Intent intent = new Intent(activity,Sub_Categories.class);
                         intent.putExtra("id",arrayList.get(position).getCategory_id());
                         intent.putExtra("weburl",Subpart);
@@ -60,7 +60,7 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
                     }
                     else
                     {
-                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName().toLowerCase();
+                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName().toLowerCase().replace(" ","-");
                         Intent intent=new Intent(activity,Web_View.class);
                         intent.putExtra("Id",arrayList.get(position).getCategory_id());
                         intent.putExtra("weburl",Subpart);
@@ -69,7 +69,7 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
                     }
                 }
             });
-        }
+//        }
 
 
 //        holder.Model_Thumbnail.setOnClickListener(new View.OnClickListener() {

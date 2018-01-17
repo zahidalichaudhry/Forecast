@@ -2,14 +2,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.zahidali.forecast_final.Fragment.Home">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.daimajia.slider.library.SliderLayout
-    android:id="@+id/slider"
-    android:layout_width="fill_parent"
-    android:layout_height="200dp"
-    android:layout_marginBottom="30dp"
-    android:layout_marginTop="5dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp" />
+            <ImageView
+                android:id="@+id/men"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="200dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/women"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/sale"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/iron"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/jumbo"
+                        android:drawableLeft="@drawable/address_s"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:text=" Address:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="82 G2 JOHAR TOWN LAHORE"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/jumbo"
+                        android:padding="5dp"
+                        android:drawableLeft="@drawable/contact"
+                        android:textStyle="bold"
+                        android:text=" Contact:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="03-111-101-102"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/jumbo"
+                        android:padding="5dp"
+                        android:drawableLeft="@drawable/email"
+                        android:textStyle="bold"
+                        android:text="  Email:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="onlinesales@forecast.com.pk"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/jumbo"
+                        android:padding="5dp"
+                        android:drawableLeft="@drawable/time"
+                        android:textStyle="bold"
+                        android:text="  Office Hours:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="9pm - 6pm"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

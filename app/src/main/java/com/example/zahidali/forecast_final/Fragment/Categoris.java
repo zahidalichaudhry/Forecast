@@ -102,8 +102,12 @@ public class Categoris extends Fragment {
                             JSONObject cat = data_level1.getJSONObject(j);
                             JSONArray data=cat.getJSONArray("children");
                             int childs=data.length();
-                            arrayList.add(new Categories(cat.getString("category_id"),cat.getString("parent_id"),cat.getString("name"),
-                                    cat.getString("is_active"),cat.getString("position"),cat.getString("level"),childs));
+
+                            if (cat.getString("is_active").equals("1"))
+                            {
+                            arrayList.add(new Categories(cat.getString("category_id"),cat.getString("parent_id"),
+                                    cat.getString("name"),
+                                    cat.getString("is_active"),cat.getString("position"),cat.getString("level"),childs));}
                         }
                     }
                     adapter=new Recycler_Adapter_Main_Catagories(arrayList,getActivity());
@@ -123,8 +127,8 @@ public class Categoris extends Fragment {
             public void onErrorResponse(VolleyError error) {
               loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
-                Toast.makeText(getActivity().getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(getActivity().getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Network Connection Error" , Toast.LENGTH_SHORT).show();
             }
         }
         ) {

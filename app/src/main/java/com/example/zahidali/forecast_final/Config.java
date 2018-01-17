@@ -7,9 +7,9 @@ package com.example.zahidali.forecast_final;
 public class Config {
 
     ////////////USER LOGIN////////////
-    public static final String URL_USER_LOGIN = "http://192.168.1.2/forecast/login.php";
+    public static final String URL_USER_LOGIN = "http://192.168.1.6/forecast/login.php";
     //If server response is equal to this that means login is successful
-    public static final String LOGIN_SUCCESS = "success";
+//    public static final String LOGIN_SUCCESS = "success";
 
 
     public static final String SHARED_PREF_NAME = "forecast";
@@ -37,12 +37,12 @@ public class Config {
     public static final String SU_KEY_PASSWORD="password";
 
 
-    public static final String URL_All_Categories= "http://192.168.1.2/forecast/getCategories.php";
-    public static final String URL_Sub_Categories= "http://192.168.1.2/forecast/getSubCategories.php";
-    public static final String URL_ALL_PRODUCTS= "http://192.168.1.2/forecast/getAllProductsByCategories.php";
-    public static final String URL_PRODUCT_DETAILS= "http://192.168.1.2/forecast/get_product_details.php";
-    public static final String URL_PRODUCT_DETAILS_CONFIGURE= "http://192.168.1.2/forecast/get_product_config_details.php";
+    public static final String URL_All_Categories= "http://192.168.1.6/forecast/getCategories.php";
+    public static final String URL_Sub_Categories= "http://192.168.1.6/forecast/getSubCategories.php";
+    public static final String URL_ALL_PRODUCTS= "http://192.168.1.6/forecast/getAllProductsByCategories.php";
+    public static final String URL_PRODUCT_DETAILS= "http://192.168.1.6/forecast/get_product_details.php";
+    public static final String URL_PRODUCT_DETAILS_CONFIGURE= "http://192.168.1.6/forecast/get_product_config_details.php";
 
-    public static final String URL_BASE_WEBVIEW= "http://forecast.com.pk/index.php";
+    public static final String URL_BASE_WEBVIEW= "http://www.forecast.com.pk/index.php";
 
 }

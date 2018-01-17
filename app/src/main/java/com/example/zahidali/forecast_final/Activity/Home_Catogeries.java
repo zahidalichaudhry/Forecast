@@ -51,4 +51,9 @@ public class Home_Catogeries extends AppCompatActivity {
         adapter.addFragment(new Categoris(), "Categories");
         viewPager.setAdapter(adapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

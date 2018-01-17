@@ -14,14 +14,15 @@
         <activity android:name=".Activity.Sing_up" />
         <activity android:name=".Activity.Splash_Screen">
             //////////////Louncher//////////
-        </activity>
-        <activity android:name=".NaviDrawer" />
-        <activity android:name=".Activity.Home_Catogeries">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".NaviDrawer" />
+        <activity android:name=".Activity.Home_Catogeries">
+
         </activity>
         <activity android:name=".Activity.Sub_Categories" />
         <activity android:name=".Activity.All_Products" />

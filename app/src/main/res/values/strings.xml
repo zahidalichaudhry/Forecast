@@ -13,6 +13,8 @@
     <string name="nav_About_us">About Us</string>
     <string name="nav_Contact">Contact</string>
     <string name="nav_Logout">Logput</string>
+    <string name="address"> Address:
+82 G2 JOHAR TOWN LAHORE</string>
     <string-array name="nav_item_activity_titles">
         <item>Home</item>
         <item>Categories</item>

@@ -87,7 +87,7 @@ public class Sub_Categories extends AppCompatActivity {
                 if (data==null)
                 {
                     Intent intent=new Intent(Sub_Categories.this,Web_View.class);
-                    intent.putExtra("Id",id);
+                    intent.putExtra("weburl",WEB_URL);
                     startActivity(intent);
                 }
                 else {
