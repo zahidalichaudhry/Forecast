@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -40,9 +44,23 @@ public class All_Products extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_all__products);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
+                startActivity(intent);
+            }
+        });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);
-        layoutManager=new GridLayoutManager(this,1);
+        layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         Intent intent = getIntent();
@@ -57,37 +75,45 @@ public class All_Products extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_ALL_PRODUCTS, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+
                 loading.dismiss();
 
 
 
 
+                    try {
+                        JSONObject abc= new JSONObject(response);
+                        for (int i=1;i<=abc.length();i++)
+                        {
+                            String num= String.valueOf(i);
+                            JSONObject data=abc.getJSONObject(num);
+                            arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
+                                    ,data.getString("img_url")));
+                        }
 
-//                    try {
-//                        int i=0;
-//                        String num= String.valueOf(i);
-//                        JSONObject obj_level1;
-//                        do {JSONObject data = new JSONObject(response);
+//                        do {JSONObject data = new getJSONObject.JSONObject("abc");
+//                            String num= String.valueOf(i);
 //                            obj_level1=data.getJSONObject(num);
 //
 //                            arrayList.add(new All_product_pojo(obj_level1.getString("product_id"),obj_level1.getString("pro_name")
 //                                    ,obj_level1.getString("img_url")));
 //                            i++;
 //
-//                        }while (obj_level1.getJSONObject(num)==null);
+//                        }while (obj_level1.getJSONObject(String.valueOf(i))==null);
 //                        {
-//
+//                            i++;
 //
 //                        }
-//                        adapter=new Recycler_Adapter_All_Products(arrayList,All_Products.this);
-//                        recyclerView.setAdapter(adapter);
-//
-//
-//                    }
-//
-//                    catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
+                        adapter=new Recycler_Adapter_All_Products(arrayList,All_Products.this);
+                        recyclerView.setAdapter(adapter);
+
+
+                    }
+
+                    catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
 
@@ -118,5 +144,11 @@ public class All_Products extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(All_Products.this.getApplicationContext());
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
+        startActivity(intent);
     }
 }

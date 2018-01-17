@@ -6,6 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -35,19 +40,34 @@ public class Sub_Categories extends AppCompatActivity {
     RecyclerView recyclerView;
     Recycler_Adapter_Sub_catagories adapter;
     RecyclerView.LayoutManager layoutManager;
+    String WEB_URL;
     private ProgressDialog loading;
     String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sub__categories);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);
         layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         Intent intent = getIntent();
          id = intent.getStringExtra("id");
+        WEB_URL=intent.getStringExtra("weburl");
         GetSubCategories();
     }
 
@@ -57,7 +77,7 @@ public class Sub_Categories extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_Sub_Categories, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                loading.dismiss();
+
                 JSONArray data= null;
                 try {
                     data = new JSONArray(response);
@@ -66,7 +86,7 @@ public class Sub_Categories extends AppCompatActivity {
                 }
                 if (data==null)
                 {
-                    Intent intent=new Intent(Sub_Categories.this,All_Products.class);
+                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
                     intent.putExtra("Id",id);
                     startActivity(intent);
                 }
@@ -78,10 +98,11 @@ public class Sub_Categories extends AppCompatActivity {
 
                                 JSONObject cat = data.getJSONObject(j);
                                 arrayList.add(new Sub_Categories_pojo(cat.getString("category_id"),cat.getString("name")));
-                            }
-                        adapter=new Recycler_Adapter_Sub_catagories(arrayList,Sub_Categories.this);
-                        recyclerView.setAdapter(adapter);
 
+                            }
+                        adapter=new Recycler_Adapter_Sub_catagories(arrayList,Sub_Categories.this,WEB_URL);
+                        recyclerView.setAdapter(adapter);
+                        loading.dismiss();
 
                     }
 

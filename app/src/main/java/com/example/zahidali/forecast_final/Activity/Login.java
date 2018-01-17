@@ -107,6 +107,7 @@ public class Login extends AppCompatActivity {
                     String lastname = quoteId.getString("customer_lastname");
                     String email = quoteId.getString("customer_email");
                     String userID=object.getString("userId");
+                    String Entity_ID=quoteId.getString("entity_id");
                     //    String regions =   object.get("regions").toString();
 
                     //Creating a shared preference
@@ -121,6 +122,7 @@ public class Login extends AppCompatActivity {
                     editor.putString(Config.SHARED_PREF_FirstName, firstname);
                     editor.putString(Config.SHARED_PREF_LastName, lastname);
                     editor.putString(Config.SHARED_PREF_UserID, userID);
+                    editor.putString(Config.SHARED_PREF_EntityID,Entity_ID);
 
                     //Saving values to editor
                     editor.commit();

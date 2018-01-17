@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.Sub_Categories" />
-        <activity android:name=".Activity.All_Products"></activity>
+        <activity android:name=".Activity.All_Products" />
+        <activity android:name=".Activity.Product_Details" />
+        <activity android:name=".Activity.Web_View"></activity>
     </application>
 
 </manifest>

@@ -5,9 +5,11 @@
     tools:context="com.example.zahidali.forecast_final.Fragment.Home">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/forecast21"/>
+    <com.daimajia.slider.library.SliderLayout
+    android:id="@+id/slider"
+    android:layout_width="fill_parent"
+    android:layout_height="200dp"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop="5dp" />
 
 </LinearLayout>

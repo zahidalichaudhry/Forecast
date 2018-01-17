@@ -1,20 +1,37 @@
 package com.example.zahidali.forecast_final.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.example.zahidali.forecast_final.Activity.Login;
 import com.example.zahidali.forecast_final.R;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Home extends Fragment {
-
-
+public class Home extends Fragment implements BaseSliderView.OnSliderClickListener{
+        SliderLayout sliderLayout ;
+      static String path0;
+    static String path1;
+        HashMap<String, String> HashMapForURL ;
     public Home() {
         // Required empty public constructor
     }
@@ -24,7 +41,55 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
+        path0="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/banner3.jpg";
+        path1="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/13.jpg";
+
+
+        AddImagesUrlOnline();
+
+        return view;
     }
 
+       private void AddImagesUrlOnline()
+
+       {
+
+        HashMapForURL = new HashMap<String, String>();
+
+           HashMapForURL.put("Female", path0);
+           HashMapForURL.put("Male", path1);
+           callSlider();
+    }
+    private void callSlider() {
+
+        for(String name : HashMapForURL.keySet()){
+
+            TextSliderView textSliderView = new TextSliderView(getActivity().getApplicationContext());
+
+            textSliderView
+                    .description(name)
+                    .image(HashMapForURL.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+
+            textSliderView.bundle(new Bundle());
+
+            textSliderView.getBundle()
+                    .putString("extra",name);
+
+            sliderLayout.addSlider(textSliderView);
+        }
+        sliderLayout.setPresetTransformer(SliderLayout.Transformer.DepthPage);
+        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        sliderLayout.setCustomAnimation(new DescriptionAnimation());
+        sliderLayout.setDuration(5000);
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+
+    }
 }

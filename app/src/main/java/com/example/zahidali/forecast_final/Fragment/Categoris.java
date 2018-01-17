@@ -87,7 +87,7 @@ public class Categoris extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, Config.URL_All_Categories, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                loading.dismiss();
                 try {
                     JSONObject obj_level0 = new JSONObject(response);
 
@@ -108,7 +108,7 @@ public class Categoris extends Fragment {
                     }
                     adapter=new Recycler_Adapter_Main_Catagories(arrayList,getActivity());
                     recyclerView.setAdapter(adapter);
-                    loading.dismiss();
+
 
                 }
 

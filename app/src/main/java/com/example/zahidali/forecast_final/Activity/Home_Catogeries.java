@@ -47,7 +47,7 @@ public class Home_Catogeries extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         Home_Cat_Pager_Adapter adapter = new Home_Cat_Pager_Adapter(getSupportFragmentManager());
-        adapter.addFragment(new Home(), "Models");
+        adapter.addFragment(new Home(), "Home");
         adapter.addFragment(new Categoris(), "Categories");
         viewPager.setAdapter(adapter);
     }

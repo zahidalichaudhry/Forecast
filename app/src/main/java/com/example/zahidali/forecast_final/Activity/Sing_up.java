@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,6 +31,9 @@ public class Sing_up extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sing_up);
         firstname = (EditText) findViewById(R.id.fname);
         lastname = (EditText) findViewById(R.id.lastname);
@@ -87,7 +92,7 @@ public class Sing_up extends AppCompatActivity {
             public void onResponse(String response) {
 
                 pd.dismiss();
-                if (response.equals("SuccessfullyRegister")) {
+                if (response.equals("hogea")) {
 
                     Toast.makeText(Sing_up.this.getApplicationContext(), "Signup Successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Sing_up.this.getApplicationContext(), Login.class);

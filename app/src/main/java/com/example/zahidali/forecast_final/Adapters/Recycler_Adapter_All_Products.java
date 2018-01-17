@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.zahidali.forecast_final.Activity.Product_Details;
 import com.example.zahidali.forecast_final.Activity.Sub_Categories;
 import com.example.zahidali.forecast_final.PojoClasses.All_product_pojo;
 import com.example.zahidali.forecast_final.PojoClasses.Sub_Categories_pojo;
@@ -46,6 +47,9 @@ public class Recycler_Adapter_All_Products extends RecyclerView.Adapter<Recycler
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(activity, Product_Details.class);
+                intent.putExtra("product_id",arrayList.get(position).getProduct_id());
+                activity.startActivity(intent);
 
 //
             }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.zahidali.forecast_final.Activity.Product_Details">
+    <include layout="@layout/action_bar">    </include>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Product Name"
+        android:gravity="center"
+        android:textColor="@color/jumbo"
+        android:id="@+id/p_name"
+        android:textColorHint="@color/jumbo"
+        android:textSize="35dp"/>
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:id="@+id/p_image"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/spinner_size"
+            android:layout_marginTop="15dp">
+
+        </Spinner>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/spinner_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp">
+        </Spinner>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_price"
+            android:textColor="@color/jumbo"
+            android:textSize="30dp"
+            android:hint="Price"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColorHint="@color/jumbo"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:textColor="@color/jumbo"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:text="Availability"
+
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_qnty"
+            android:gravity="center"
+            android:textColor="@color/jumbo" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:gravity="right"
+            android:layout_marginLeft="15dp"
+            android:layout_height="50dp"
+            android:hint="Entery Quantity"
+            android:inputType="number"
+            android:id="@+id/ed_qty"/>
+
+    </LinearLayout>
+    <Button
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:id="@+id/buy"
+        android:background="@color/jumbo"
+        android:textColor="@color/white"
+        android:text="Buy now"/>
+
+</LinearLayout>
+</ScrollView>
+
+
+</LinearLayout>
