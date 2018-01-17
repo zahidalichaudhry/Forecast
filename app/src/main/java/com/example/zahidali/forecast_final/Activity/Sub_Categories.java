@@ -86,8 +86,10 @@ public class Sub_Categories extends AppCompatActivity {
                 }
                 if (data==null)
                 {
-                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
-                    intent.putExtra("weburl",WEB_URL);
+                    Intent intent=new Intent(Sub_Categories.this,All_Products.class);
+//                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
+//                    intent.putExtra("weburl",WEB_URL);
+                    intent.putExtra("Id",id);
                     startActivity(intent);
                 }
                 else {

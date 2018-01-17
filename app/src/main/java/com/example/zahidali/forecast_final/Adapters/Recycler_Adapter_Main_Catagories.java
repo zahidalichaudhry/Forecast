@@ -60,10 +60,10 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
                     }
                     else
                     {
-                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName().toLowerCase().replace(" ","-");
-                        Intent intent=new Intent(activity,Web_View.class);
+//                        String Subpart=WEB_URL+"/"+arrayList.get(position).getName().toLowerCase().replace(" ","-");
+                        Intent intent=new Intent(activity,All_Products.class);
                         intent.putExtra("Id",arrayList.get(position).getCategory_id());
-                        intent.putExtra("weburl",Subpart);
+//                        intent.putExtra("weburl",Subpart);
                         activity.startActivity(intent);
 //                   Toast.makeText(activity,"Open Product Activity",Toast.LENGTH_LONG).show();
                     }

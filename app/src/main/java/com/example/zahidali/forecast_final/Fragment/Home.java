@@ -68,16 +68,8 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         Glide.with(getActivity()).load(menimage).into(men);
         Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
-        Glide.with(this).load(bajiImage).asBitmap().into(new SimpleTarget<Bitmap>(300,200 ) {
+        Glide.with(this).load(bajiImage).into(baji);
 
-            @Override
-            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                Drawable drawable = new BitmapDrawable(getActivity().getResources(), resource);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    image.setBackground(drawable);
-                }
-            }
-        });
         AddImagesUrlOnline();
 
         return view;

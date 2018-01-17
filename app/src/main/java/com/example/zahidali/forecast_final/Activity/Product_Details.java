@@ -42,8 +42,8 @@ public class Product_Details extends AppCompatActivity {
     EditText ed_qty;
     Spinner s_color,s_size;
     Button Buy;
-    List<String> arrayListcolor;
-    List<String> arrayListsize;
+    ArrayList<String> arrayListcolor= new ArrayList<>();
+    ArrayList<String> arrayListsize= new ArrayList<>();
 
     private ProgressDialog loading;
 
@@ -85,7 +85,7 @@ public class Product_Details extends AppCompatActivity {
                     name.setText(p_des);
                     tv_aval.setText(p_quantity);
                     tv_price.setText(p_price);
-                    if (p_quantity=="0");
+                    if (p_quantity.equals("0"))
 
                     {
 //                        tv_aval.setText("Out Of Stock");
@@ -95,10 +95,19 @@ public class Product_Details extends AppCompatActivity {
 
 
                     }
-                    if (p_type=="configurable")
+                    else if (p_type.equals("configurable"))
                     {
+                        if (p_quantity.equals("0"))
+                        {
+                            tv_aval.setText(p_quantity);
+                            Buy.setEnabled(false);
+                            ed_qty.setVisibility(View.GONE);
+                        }else
+                            {
+                                ed_qty.setEnabled(true);
+                                productifConfigure();
+                            }
 
-                        productifConfigure();
                     }
                     else
                     {
@@ -146,6 +155,7 @@ public class Product_Details extends AppCompatActivity {
 
                 loading.dismiss();
 
+
                 try {
                     JSONObject object = new JSONObject(response);
                     JSONArray arraycolor=object.getJSONArray("color");
@@ -158,7 +168,7 @@ public class Product_Details extends AppCompatActivity {
                         {
                             try {
                                 JSONObject jsonObject=arraycolor.getJSONObject(count);
-                                arrayListsize.add(jsonObject.getString("option_title"));
+                                arrayListcolor.add(jsonObject.getString("option_title"));
 
                                 count++ ;
                             } catch (JSONException e) {
