@@ -2,14 +2,21 @@ package com.example.zahidali.forecast_final.Fragment;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -30,6 +37,7 @@ import java.util.HashMap;
 public class Home extends Fragment implements BaseSliderView.OnSliderClickListener{
         SliderLayout sliderLayout ;
       static String path0;
+      LinearLayout image;
 
       String menimage,womenimage,saleimage,bajiImage;
     static String path1;
@@ -60,7 +68,16 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         Glide.with(getActivity()).load(menimage).into(men);
         Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
-        Glide.with(getActivity()).load(bajiImage).into(baji);
+        Glide.with(this).load(bajiImage).asBitmap().into(new SimpleTarget<Bitmap>(300,200 ) {
+
+            @Override
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                Drawable drawable = new BitmapDrawable(getActivity().getResources(), resource);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    image.setBackground(drawable);
+                }
+            }
+        });
         AddImagesUrlOnline();
 
         return view;
