@@ -30,9 +30,10 @@ import java.util.HashMap;
 public class Home extends Fragment implements BaseSliderView.OnSliderClickListener{
         SliderLayout sliderLayout ;
       static String path0;
-      String menimage,womenimage,saleimage;
+
+      String menimage,womenimage,saleimage,bajiImage;
     static String path1;
-    ImageView men,women,sale;
+    ImageView men,women,sale,baji;
         HashMap<String, String> HashMapForURL ;
     public Home() {
         // Required empty public constructor
@@ -51,13 +52,15 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         menimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/samllbanner.jpg";
         womenimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/smallbanner2%20(1).jpg";
         saleimage="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/probanner3.jpg";
+        bajiImage  = "http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/parallax_img.jpg";
         men=(ImageView)view.findViewById(R.id.men);
         women=(ImageView)view.findViewById(R.id.women);
         sale=(ImageView)view.findViewById(R.id.sale);
+        baji=(ImageView)view.findViewById(R.id.baji);
         Glide.with(getActivity()).load(menimage).into(men);
         Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
-
+        Glide.with(getActivity()).load(bajiImage).into(baji);
         AddImagesUrlOnline();
 
         return view;

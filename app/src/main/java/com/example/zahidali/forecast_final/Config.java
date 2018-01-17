@@ -30,7 +30,7 @@ public class Config {
     //Keys for email and password as defined in our $_POST['key'] in login.php
 
     ///////////USER SIGNUP URL/////
-    public static final String URL_USER_SIGNUP="http://192.168.1.4/forecast/customer_signup_demo.php";
+    public static final String URL_USER_SIGNUP="http://192.168.1.6/forecast/customer_signup_demo.php";
     public static final String SU_KEY_EMAIl="email";
     public static final String SU_KEY_FISTANME="firstname";
     public static final String SU_KEY_LASTNAME="lastname";
