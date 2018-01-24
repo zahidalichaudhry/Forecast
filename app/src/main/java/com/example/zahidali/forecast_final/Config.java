@@ -5,17 +5,26 @@ package com.example.zahidali.forecast_final;
  */
 
 public class Config {
-    public static final String ip="192.168.10.14";
+    public static final String ip="192.168.10.9";
 
-    ////////////USER LOGIN////////////
+    //////////USER LOGIN////////////
     public static final String URL_USER_LOGIN = "http://"+ip+"/forecast/login.php";
     //If server response is equal to this that means login is successful
 //    public static final String LOGIN_SUCCESS = "success";
     public static final String SHARED_PREF_CART = "cart";
     public static final String SHARED_PREF_CART_NO = "cart_id";
 
+///////////////Home PAGE Pics////////////////
 
+    public static final String BANNER1 = "http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/13.jpg";
+    public static final String BANNER2 = "http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/banner3.jpg";
+    public static final String BANNER3 = "http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/11.jpg";
 
+    public static final String HOME_MEN = "http://"+Config.ip+"/ForecastMobile/mens.jpg";
+    public static final String HOME_WOMEN = "http://"+Config.ip+"/ForecastMobile/womens.jpg";
+    public static final String HOME_FOOTWARE = "http://"+Config.ip+"/ForecastMobile/footware.jpg";
+    public static final String HOMW_SALE = "http://"+Config.ip+"/ForecastMobile/sale.jpg";
+/////////////////////////////////END///////////////////////
     public static final String SHARED_PREF_NAME = "forecast";
 
     //This would be used to store the email of current logged in user

@@ -141,7 +141,7 @@ public class Product_Details extends AppCompatActivity {
                     String product_id = object.getString("id");
                     String p_price = object.getString("price");
                     String p_sku = object.getString("sku");
-                    String p_img_url=object.getString("img");
+                    String p_img_url=object.getString("img").replace("localhost",Config.ip);
                     String p_des=object.getString("des");
                     String p_type=object.getString("type_id");
                     String p_quantity=object.getString("product_quantity");

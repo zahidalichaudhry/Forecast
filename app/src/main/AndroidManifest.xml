@@ -26,7 +26,9 @@
         <activity android:name=".Activity.All_Products" />
         <activity android:name=".Activity.Product_Details" />
         <activity android:name=".Activity.Web_View" />
-        <activity android:name=".Activity.Check_Out" />
+        <activity android:name=".Activity.Check_Out"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
         <activity android:name=".Activity.MyCart">
 
             <!-- <intent-filter> -->

@@ -82,13 +82,13 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
-        path0="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/13.jpg";
-        path1="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/banner3.jpg";
-        path2="http://www.forecast.com.pk/media/wysiwyg/porto/homepage/slider/02/11.jpg";
-        menimage="http://"+Config.ip+"/ForecastMobile/22.jpg";
-        womenimage="http://"+Config.ip+"/ForecastMobile/33.jpg";
-        saleimage="http://"+Config.ip+"/ForecastMobile/11.jpg";
-        bajiImage  = "http://"+Config.ip+"/ForecastMobile/44.jpg";
+        path0=Config.BANNER1;
+        path1=Config.BANNER2;
+        path2=Config.BANNER3;
+        menimage=Config.HOME_MEN;
+        womenimage=Config.HOME_WOMEN;
+        saleimage=Config.HOMW_SALE;
+        bajiImage  = Config.HOME_FOOTWARE;
         men=(ImageView)view.findViewById(R.id.men);
         women=(ImageView)view.findViewById(R.id.women);
         sale=(ImageView)view.findViewById(R.id.sale);
@@ -210,7 +210,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
                         String num= String.valueOf(i);
                         JSONObject data=abc.getJSONObject(num);
                         arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                ,data.getString("img_url")));
+                                ,data.getString("img_url").replace("localhost",Config.ip)));
                     }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");

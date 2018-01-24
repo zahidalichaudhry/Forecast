@@ -128,7 +128,7 @@ public class MyCart extends AppCompatActivity {
                     {
                         JSONObject data=abc.getJSONObject(i);
                         arrayList.add(new cart_item_pojo(data.getString("product_id"),data.getString("name")
-                                ,data.getString("image_url"),data.getString("item_qty"),data.getString("total"),
+                                ,data.getString("image_url").replace("localhost",Config.ip),data.getString("item_qty"),data.getString("total"),
                                 data.getString("item_id"),data.getString("price")));
                          grand=data.getString("total");
                          d=d+Float.valueOf(grand);
