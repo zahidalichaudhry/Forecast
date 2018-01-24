@@ -84,7 +84,30 @@ public class Check_Out extends AppCompatActivity {
         grand1=(TextView)findViewById(R.id.Grand_Total);
         code2=(TextView)findViewById(R.id.code);
         done=(Button)findViewById(R.id.done);
+        //////////////////////////////////////////////////////
+
         detail.setVisibility(View.GONE);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                SharedPreferences settings = Check_Out.this.getSharedPreferences(Config.SHARED_PREF_CART, Context.MODE_PRIVATE);
+                settings.edit().clear().commit();
+                //Getting out sharedpreferences
+//                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
+//                //Getting editor
+//                SharedPreferences.Editor editor = preferences.edit();
+//
+//                //Putting blank value to email
+//                editor.putString(Config.SHARED_PREF_CART_NO, null);
+//                editor.clear();
+//                editor.apply();
+                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
+                startActivity(intent);
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_CART, Context.MODE_PRIVATE);
         cart_no=sharedPreferences.getString(Config.SHARED_PREF_CART_NO,null);
         order.setOnClickListener(new View.OnClickListener() {
@@ -202,23 +225,23 @@ public class Check_Out extends AppCompatActivity {
                     ship1.setText(shipping);
                     grand1.setText(total);
 
-                    done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //Getting out sharedpreferences
-                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
-                //Getting editor
-                SharedPreferences.Editor editor = preferences.edit();
-
-                //Putting blank value to email
-                editor.putString(Config.SHARED_PREF_CART_NO, null);
-                editor.clear();
-                editor.apply();
-                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
-                startActivity(intent);
-            }
-        });
+//                    done.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //Getting out sharedpreferences
+//                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
+//                //Getting editor
+//                SharedPreferences.Editor editor = preferences.edit();
+//
+//                //Putting blank value to email
+//                editor.putString(Config.SHARED_PREF_CART_NO, null);
+//                editor.clear();
+//                editor.apply();
+////                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
+////                startActivity(intent);
+//            }
+//        });
 
 //                    OrderDetails();
 

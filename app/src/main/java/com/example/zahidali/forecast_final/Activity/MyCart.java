@@ -85,6 +85,7 @@ public class MyCart extends AppCompatActivity {
                 if (cart_no==null)
                 {
                     Toast.makeText(MyCart.this,"There is no item in the Cart",Toast.LENGTH_LONG).show();
+                    chek.setEnabled(false);
                 }else
                 {
                     Intent intent =new Intent(MyCart.this,Check_Out.class);
