@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.zahidali.forecast_final.Activity.MyCart">
+    <include layout="@layout/action_bar">
+    </include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="120dp"
+            android:layout_margin="2dp"
+            android:layout_height="wrap_content"
+            android:text="Chek out"
+            android:id="@+id/chekout"
+            android:background="@drawable/button_back"/>
+        <TextView
+            android:layout_width="120dp"
+            android:padding="2dp"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="2dp"
+            android:background="@drawable/button_back"
+            android:textColor="@color/jumbo"
+            android:text="Grand Total:"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="2dp"
+            android:background="@drawable/button_back"
+            android:textColor="@color/jumbo"
+            android:id="@+id/g_price"
+            />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/model_recyclerView"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="2dp"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

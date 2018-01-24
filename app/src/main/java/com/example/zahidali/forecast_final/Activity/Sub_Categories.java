@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -59,6 +60,14 @@ public class Sub_Categories extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+        ImageView bag=(ImageView)findViewById(R.id.bag);
+        bag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Sub_Categories.this,MyCart.class);
+                startActivity(intent);
             }
         });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);

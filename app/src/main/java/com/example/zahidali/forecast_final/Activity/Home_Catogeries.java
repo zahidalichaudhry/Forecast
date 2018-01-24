@@ -1,6 +1,7 @@
 package com.example.zahidali.forecast_final.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -8,8 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.example.zahidali.forecast_final.Adapters.Home_Cat_Pager_Adapter;
 import com.example.zahidali.forecast_final.Fragment.Categoris;
@@ -37,7 +40,14 @@ public class Home_Catogeries extends AppCompatActivity {
 //        toolbar.setNavigationIcon(R.drawable.lock);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        ImageView bag=(ImageView)findViewById(R.id.bag);
+        bag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home_Catogeries.this,MyCart.class);
+                startActivity(intent);
+            }
+        });
         viewPager = (ViewPager)findViewById(R.id.viewpager);
 
 

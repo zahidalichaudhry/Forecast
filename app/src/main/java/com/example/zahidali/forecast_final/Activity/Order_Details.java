@@ -10,7 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -20,13 +21,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.zahidali.forecast_final.Adapters.Recycler_Adapter_All_Products;
-import com.example.zahidali.forecast_final.Adapters.Recycler_Adapter_Sub_catagories;
+import com.example.zahidali.forecast_final.Adapters.Recycler_Adapter_Order_products;
 import com.example.zahidali.forecast_final.Config;
 import com.example.zahidali.forecast_final.PojoClasses.All_product_pojo;
-import com.example.zahidali.forecast_final.PojoClasses.Sub_Categories_pojo;
+import com.example.zahidali.forecast_final.PojoClasses.Order_product_pojo;
 import com.example.zahidali.forecast_final.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,13 +34,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class All_Products extends AppCompatActivity {
-    ArrayList<All_product_pojo> arrayList=new ArrayList<>();
+public class Order_Details extends AppCompatActivity {
+    TextView price,ship,grand,code;
+    Button done;
+    ArrayList<Order_product_pojo> arrayList=new ArrayList<>();
     RecyclerView recyclerView;
-    Recycler_Adapter_All_Products adapter;
+    Recycler_Adapter_Order_products adapter;
     RecyclerView.LayoutManager layoutManager;
     private ProgressDialog loading;
-    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,9 @@ public class All_Products extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_all__products);
+        setContentView(R.layout.activity_order__details);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,31 +59,26 @@ public class All_Products extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
+                Intent intent=new Intent(Order_Details.this,Home_Catogeries.class);
                 startActivity(intent);
             }
         });
-        ImageView bag=(ImageView)findViewById(R.id.bag);
-        bag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(All_Products.this,MyCart.class);
-                startActivity(intent);
-            }
-        });
+
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);
         layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        Intent intent = getIntent();
-        id = intent.getStringExtra("Id");
-        GetAllProducts();
+        price=(TextView)findViewById(R.id.total_price);
+        ship=(TextView)findViewById(R.id.shipping);
+        grand=(TextView)findViewById(R.id.Grand_Total);
+        code=(TextView)findViewById(R.id.code);
+        done=(Button)findViewById(R.id.done);
     }
-//////getting all product by vollay/////
+    //////getting all product by vollay/////
     private void GetAllProducts()
     {
 
-        loading = ProgressDialog.show(All_Products.this,"Loading...","Please wait...",false,false);
+        loading = ProgressDialog.show(Order_Details.this,"Loading...","Please wait...",false,false);
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_ALL_PRODUCTS, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -91,15 +89,15 @@ public class All_Products extends AppCompatActivity {
 
 
 
-                    try {
-                        JSONObject abc= new JSONObject(response);
-                        for (int i=1;i<=abc.length();i++)
-                        {
-                            String num= String.valueOf(i);
-                            JSONObject data=abc.getJSONObject(num);
-                            arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                    ,data.getString("img_url").replace("localhost",Config.ip)));
-                        }
+                try {
+                    JSONObject abc= new JSONObject(response);
+                    for (int i=1;i<=abc.length();i++)
+                    {
+                        String num= String.valueOf(i);
+                        JSONObject data=abc.getJSONObject(num);
+//                        arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
+//                                ,data.getString("img_url")));
+                    }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");
 //                            String num= String.valueOf(i);
@@ -114,16 +112,16 @@ public class All_Products extends AppCompatActivity {
 //                            i++;
 //
 //                        }
-                        adapter=new Recycler_Adapter_All_Products(arrayList,All_Products.this);
-                        recyclerView.setAdapter(adapter);
+//                    adapter=new Recycler_Adapter_All_Products(arrayList,Order_Details.this);
+//                    recyclerView.setAdapter(adapter);
 
 
-                    }
+                }
 
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                        loading.dismiss();
-                    }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                    loading.dismiss();
+                }
 
 
 
@@ -135,7 +133,7 @@ public class All_Products extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
-                Toast.makeText(All_Products.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Order_Details.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -144,7 +142,7 @@ public class All_Products extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("category_id", id);
+//                params.put("category_id", id);
                 return params;
             }
         };
@@ -153,13 +151,8 @@ public class All_Products extends AppCompatActivity {
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue requestQueue = Volley.newRequestQueue(All_Products.this.getApplicationContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(Order_Details.this.getApplicationContext());
         requestQueue.add(request);
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
-        startActivity(intent);
-    }
 }

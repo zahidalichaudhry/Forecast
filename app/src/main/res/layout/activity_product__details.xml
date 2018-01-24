@@ -34,50 +34,60 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_marginLeft="5dp"
-        android:weightSum="3"
         android:orientation="horizontal">
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:gravity="center"
             android:id="@+id/spinner_size"
-            android:layout_marginTop="15dp">
+            >
 
         </Spinner>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:id="@+id/spinner_color"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp">
+            android:gravity="center">
         </Spinner>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/tv_price"
-            android:textColor="@color/jumbo"
-            android:textSize="30dp"
-            android:hint="Price"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColorHint="@color/jumbo"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/jumbo"
+                android:text="PKR"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_price"
+                android:textColor="@color/jumbo"
+                android:textSize="14dp"
+                android:hint="Price"
+                android:layout_gravity="center"
+                android:textColorHint="@color/jumbo" />
+        </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
+        android:padding="5dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="75dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
             android:gravity="center"
             android:textColor="@color/jumbo"
             android:layout_marginBottom="5dp"
@@ -113,7 +123,7 @@
         android:id="@+id/buy"
         android:background="@color/jumbo"
         android:textColor="@color/white"
-        android:text="Buy now"/>
+        android:text="Add To Cart"/>
 
 </LinearLayout>
 </ScrollView>

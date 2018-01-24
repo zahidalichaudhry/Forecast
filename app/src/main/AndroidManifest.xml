@@ -4,16 +4,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/fc"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/fc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.Login" />
         <activity android:name=".Activity.Sing_up" />
         <activity android:name=".Activity.Splash_Screen">
-            //////////////Louncher//////////
+            //////////////Launcher//////////
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,13 +21,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".NaviDrawer" />
-        <activity android:name=".Activity.Home_Catogeries">
-
-        </activity>
+        <activity android:name=".Activity.Home_Catogeries" />
         <activity android:name=".Activity.Sub_Categories" />
         <activity android:name=".Activity.All_Products" />
         <activity android:name=".Activity.Product_Details" />
-        <activity android:name=".Activity.Web_View"></activity>
+        <activity android:name=".Activity.Web_View" />
+        <activity android:name=".Activity.Check_Out" />
+        <activity android:name=".Activity.MyCart">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".Activity.Order_Details"></activity>
     </application>
 
 </manifest>
