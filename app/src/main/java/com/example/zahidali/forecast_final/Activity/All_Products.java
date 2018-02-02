@@ -88,9 +88,6 @@ public class All_Products extends AppCompatActivity {
 
                 loading.dismiss();
 
-
-
-
                     try {
                         JSONObject abc= new JSONObject(response);
                         for (int i=1;i<=abc.length();i++)
