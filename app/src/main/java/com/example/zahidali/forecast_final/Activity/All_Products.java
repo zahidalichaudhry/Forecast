@@ -79,7 +79,6 @@ public class All_Products extends AppCompatActivity {
 //////getting all product by vollay/////
     private void GetAllProducts()
     {
-
         loading = ProgressDialog.show(All_Products.this,"Loading...","Please wait...",false,false);
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_ALL_PRODUCTS, new com.android.volley.Response.Listener<String>() {
             @Override
