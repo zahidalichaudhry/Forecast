@@ -73,6 +73,14 @@
     android:textStyle="bold|italic"
     android:textColor="@color/jumbo"
     android:text="New Arrival"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/new_a"
+                android:textColor="@color/green"
+                android:textStyle="italic|bold"
+                android:text="Please Wait......."/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

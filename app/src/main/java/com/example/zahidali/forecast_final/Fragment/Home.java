@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -57,7 +59,7 @@ import java.util.Map;
 public class Home extends Fragment implements BaseSliderView.OnSliderClickListener{
     SliderLayout sliderLayout ;
     static String path0;
-    LinearLayout image;
+    LinearLayout footer;
     String id;
     ArrayList<All_product_pojo> arrayList=new ArrayList<>();
     RecyclerView recyclerView;
@@ -69,6 +71,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
       String menimage,womenimage,saleimage,bajiImage;
     static String path1,path2;
     ImageView men,women,sale,baji;
+    TextView new_a;
         HashMap<String, String> HashMapForURL ;
     public Home() {
         // Required empty public constructor
@@ -97,6 +100,15 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
         Glide.with(this).load(bajiImage).into(baji);
+        footer=(LinearLayout)view.findViewById(R.id.footer);
+        new_a=(TextView)view.findViewById(R.id.new_a);
+        footer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://itpvt.net/"));
+                startActivity(myIntent);
+            }
+        });
         recyclerView=(RecyclerView)view.findViewById(R.id.model_recyclerView);
 //        layoutManager=new GridLayoutManager(getActivity(),1);
 
@@ -181,7 +193,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         sliderLayout.setPresetTransformer(SliderLayout.Transformer.DepthPage);
         sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
-        sliderLayout.setDuration(5000);
+        sliderLayout.setDuration(8000);
     }
 
 
@@ -192,13 +204,14 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
     private void GetAllProducts()
     {
 
-        loading = ProgressDialog.show(getActivity(),"Loading...","Please wait...",false,false);
+//        loading = ProgressDialog.show(getActivity(),"Loading...","Please wait...",false,false);
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_ALL_PRODUCTS, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
 
-                loading.dismiss();
+//                loading.dismiss();
+                new_a.setVisibility(View.GONE);
 
 
 
@@ -234,7 +247,8 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
 
                 catch (JSONException e) {
                     e.printStackTrace();
-                    loading.dismiss();
+//                    loading.dismiss();
+                    new_a.setVisibility(View.GONE);
                 }
 
 
@@ -245,8 +259,9 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                loading.dismiss();
+//                loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
+                new_a.setVisibility(View.GONE);
                 Toast.makeText(getActivity().getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
 
             }

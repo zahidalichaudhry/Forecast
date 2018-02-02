@@ -9,311 +9,329 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/action_bar"></include>
-        <LinearLayout
+
+    <LinearLayout
+        android:id="@+id/place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginRight="35dp"-->
+        <!--android:layout_marginLeft="35dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:text="Grand Total:"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:padding="2dp"-->
+        <!--android:textSize="22sp" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:textColor="@color/jumbo"-->
+        <!--android:padding="2dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_marginLeft="5dp" />-->
+        <!--</LinearLayout>-->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/place"
-            android:orientation="vertical">
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginRight="35dp"-->
-                <!--android:layout_marginLeft="35dp"-->
-            <!--android:padding="2dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-                <!--android:orientation="horizontal">-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:text="Grand Total:"-->
-                    <!--android:textColor="@color/colorAccent"-->
-                    <!--android:padding="2dp"-->
-                   <!--android:textSize="22sp" />-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:textColor="@color/jumbo"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:textSize="18sp"-->
-                    <!--android:layout_marginLeft="5dp" />-->
-            <!--</LinearLayout>-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginTop="10dp"
-                android:padding="2dp"
-                android:text="@string/num1"
-                android:textColor="@color/jumbo"
-                android:textSize="18sp" />
-            <!--<view-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/black"-->
-                <!--android:layout_marginLeft="22dp"-->
-                <!--android:layout_marginRight="35dp"/>-->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/cfname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="First name"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:text="@string/num1"
+            android:textColor="@color/jumbo"
+            android:textSize="18sp" />
+        <!--<view-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/black"-->
+        <!--android:layout_marginLeft="22dp"-->
+        <!--android:layout_marginRight="35dp"/>-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="8dp"
+            android:background="#0000">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/clastname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Last name"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/cfname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+                android:hint="First name"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/uemail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/company"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Company"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Address"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/clastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+                android:hint="Last name"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="City"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/stat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="State/Province"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/uemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+                android:hint="Email"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/zip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Zip Code"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/tele"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="TelePhone"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/country"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Country"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHighlight="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+                android:hint="Company"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:background="#0000">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/fax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Fax"
-                    android:inputType="text"
-                    android:textColorHighlight="@color/black"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-            </android.support.design.widget.TextInputLayout>
-            <TextView
+                android:hint="Address"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/city"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="2. SHIPPING METHOD"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:textColor="@color/jumbo"
-                android:padding="2dp"
-                android:textSize="18sp"
-                />
-            <TextView
+                android:layout_height="wrap_content"
+                android:hint="City"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/stat"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Flat Rate
+                android:layout_height="wrap_content"
+                android:hint="State/Province"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/zip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Zip Code"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tele"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="TelePhone"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Only Available In pakistan"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#0000">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/fax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fax"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorHint="@color/black" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:text="2. SHIPPING METHOD"
+            android:textColor="@color/jumbo"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:text="Flat Rate
 Fixed PKR150"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:textColor="@color/jumbo"
-                android:padding="2dp"
-                android:textSize="12sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3. PAYMENT METHOD"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:textColor="@color/jumbo"
-                android:padding="2dp"
-                android:textSize="18sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Cash On Delivery"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginLeft="35dp"
-                android:textColor="@color/jumbo"
-                android:padding="2dp"
-                android:textSize="12sp" />
-            <!--<Button-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="22dp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:id="@+id/review"-->
-                <!--android:layout_marginRight="35dp"-->
-                <!--android:text="REVIEW YOUR ORDER"-->
-                <!--android:background="@color/jumbo" />-->
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/white"
-                android:layout_marginRight="35dp"
-                android:id="@+id/order"
-                android:text="PLACE ORDER"
-                android:background="@color/jumbo"
-                android:layout_marginBottom="10dp" />
-        </LinearLayout>
+            android:textColor="@color/jumbo"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:text="3. PAYMENT METHOD"
+            android:textColor="@color/jumbo"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:text="Cash On Delivery"
+            android:textColor="@color/jumbo"
+            android:textSize="12sp" />
+        <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="22dp"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:id="@+id/review"-->
+        <!--android:layout_marginRight="35dp"-->
+        <!--android:text="REVIEW YOUR ORDER"-->
+        <!--android:background="@color/jumbo" />-->
+        <Button
+            android:id="@+id/order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/green"
+            android:text="PLACE ORDER"
+            android:textColor="@color/white" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -424,7 +442,7 @@ Fixed PKR150"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
-            android:background="@color/jumbo"
+            android:background="@color/green"
             android:text="Proceed"
             android:textColor="@color/white"
             android:layout_height="wrap_content"

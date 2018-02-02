@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,6 +60,9 @@ public class Product_Details extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_product__details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,16 +147,25 @@ public class Product_Details extends AppCompatActivity {
                     String p_price = object.getString("price");
                     String p_sku = object.getString("sku");
                     String p_img_url=object.getString("img").replace("localhost",Config.ip);
-                    String p_des=object.getString("des");
+                    String p_des=object.getString("proName");
                     String p_type=object.getString("type_id");
                     String p_quantity=object.getString("product_quantity");
+                    String P_dis_price=object.getString("discount_price");
 
 
 
                     Glide.with(Product_Details.this).load(p_img_url).into(imageView);
                     name.setText(p_des);
                     tv_aval.setText("In Stock");
-                    tv_price.setText(p_price);
+                    if (P_dis_price==null)
+                    {
+                        tv_price.setText(p_price);
+                    }
+                    else
+                        {
+                            tv_price.setText(P_dis_price);
+                        }
+
                     if (p_quantity.equals("0.0000"))
                     {
 //                        tv_aval.setText("Out Of Stock");
@@ -224,6 +238,7 @@ public class Product_Details extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(Product_Details.this,response,Toast.LENGTH_LONG).show();
                 }
 
 

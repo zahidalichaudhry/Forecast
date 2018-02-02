@@ -122,7 +122,9 @@ public class All_Products extends AppCompatActivity {
 
                     catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(All_Products.this,"Nothing is Available For Time Being",Toast.LENGTH_LONG).show();
                         loading.dismiss();
+                        onBackPressed();
                     }
 
 
@@ -136,6 +138,7 @@ public class All_Products extends AppCompatActivity {
                 loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
                 Toast.makeText(All_Products.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                onBackPressed();
 
             }
         }

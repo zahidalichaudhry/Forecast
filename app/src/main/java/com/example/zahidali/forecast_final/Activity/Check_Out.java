@@ -46,7 +46,7 @@ public class Check_Out extends AppCompatActivity {
     TextView price1,ship1,grand1,code2;
     Button done;
     private LinearLayout detail,place;
-    String code1,sutotal,shipping,total;
+    String code1,sutotal,shipping,total,mobile;
     private ProgressDialog loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class Check_Out extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_check__out);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -84,6 +85,8 @@ public class Check_Out extends AppCompatActivity {
         grand1=(TextView)findViewById(R.id.Grand_Total);
         code2=(TextView)findViewById(R.id.code);
         done=(Button)findViewById(R.id.done);
+        country.setEnabled(false);
+        mobile="(Mobile)";
         //////////////////////////////////////////////////////
 
         detail.setVisibility(View.GONE);
@@ -164,7 +167,7 @@ public class Check_Out extends AppCompatActivity {
                 }
                 else if (v == order) {
                     //RegisterOrder();
-                    ufname=fname.getText().toString();
+                    ufname=fname.getText().toString()+mobile;
                     ulastname=lastname.getText().toString();
                     uemail=email.getText().toString();
                     ucompany=company.getText().toString();
@@ -173,7 +176,7 @@ public class Check_Out extends AppCompatActivity {
                     ustate=state.getText().toString();
                     uzip=zip.getText().toString();
                     utele=tele.getText().toString();
-                    ucountry=country.getText().toString();
+                    ucountry="PK";
                     ufax=fax.getText().toString();
                     placeorder();
                 }

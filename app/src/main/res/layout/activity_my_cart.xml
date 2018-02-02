@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:text="Chek out"
             android:id="@+id/chekout"
-            android:background="@drawable/button_back"/>
+            android:textColor="@color/white"
+            android:background="@color/green"/>
         <TextView
             android:layout_width="120dp"
             android:padding="2dp"
