@@ -65,6 +65,7 @@ public class MyCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MyCart.this,Home_Catogeries.class);
+
                 startActivity(intent);
             }
         });

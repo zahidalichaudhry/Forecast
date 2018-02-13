@@ -84,7 +84,7 @@ public class Categoris extends Fragment {
     {
 
         loading = ProgressDialog.show(getActivity(),"Loading...","Please wait...",false,false);
-        StringRequest request = new StringRequest(Request.Method.GET, Config.URL_All_Categories, new com.android.volley.Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, Config.URL_All_Categories, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 loading.dismiss();

@@ -166,7 +166,7 @@ public class Product_Details extends AppCompatActivity {
                             tv_price.setText(P_dis_price);
                         }
 
-                    if (p_quantity.equals("0.0000"))
+                    if (p_quantity.equals("0"))
                     {
 //                        tv_aval.setText("Out Of Stock");
                         tv_aval.setText("Out Of Stock");
@@ -176,7 +176,7 @@ public class Product_Details extends AppCompatActivity {
                         s_color.setVisibility(View.GONE);
                         s_size.setVisibility(View.GONE);
                     }
-                    else if (p_type.equals("configurable") && !p_quantity.equals("0.0000"))
+                    else if (p_type.equals("configurable") && !p_quantity.equals("0"))
                     {
 
                             Buy.setEnabled(true);
@@ -186,7 +186,7 @@ public class Product_Details extends AppCompatActivity {
                             productifConfigure();
                            // ed_qty.setVisibility(View.GONE);
                     }
-                    else if (p_type.equals("simple") && !p_quantity.equals("0.0000"))
+                    else if (p_type.equals("simple") && !p_quantity.equals("0"))
                     {
                         ed_qty.setEnabled(true);
                         s_color.setVisibility(View.GONE);

@@ -140,6 +140,7 @@ public class Login extends AppCompatActivity {
 
                             //Starting profile activity
                             Intent intent = new Intent(Login.this.getApplicationContext(), Home_Catogeries.class);
+                            finish();
                             startActivity(intent);
                             //  JSONArray regionArray = object.getJSONArray("regions");
 
