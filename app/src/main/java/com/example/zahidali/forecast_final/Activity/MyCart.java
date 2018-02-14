@@ -104,6 +104,7 @@ public class MyCart extends AppCompatActivity {
         if (cart_no==null)
         {
             Toast.makeText(MyCart.this,"There is no item in the Cart",Toast.LENGTH_LONG).show();
+            chek.setEnabled(false);
         }else
         {
            GettingCArt();
@@ -120,35 +121,42 @@ public class MyCart extends AppCompatActivity {
 
                 loading.dismiss();
 
-
-
-
-                try {
-                    JSONArray abc= new JSONArray(response);
-                    for (int i=0;i<abc.length();i=i+2)
+                if (response.equals("[]"))
+                {
+                    Toast.makeText(MyCart.this,"There is no item in the Cart",Toast.LENGTH_LONG).show();
+                    chek.setEnabled(false);
+                }else
                     {
-                        JSONObject data=abc.getJSONObject(i);
-                        arrayList.add(new cart_item_pojo(data.getString("product_id"),data.getString("name")
-                                ,data.getString("image_url").replace("localhost",Config.ip),data.getString("item_qty"),data.getString("total"),
-                                data.getString("item_id"),data.getString("price")));
-                         grand=data.getString("total");
-                         d=d+Float.valueOf(grand);
+
+
+                        try {
+                            JSONArray abc= new JSONArray(response);
+                            for (int i=0;i<abc.length();i=i+2)
+                            {
+                                JSONObject data=abc.getJSONObject(i);
+                                arrayList.add(new cart_item_pojo(data.getString("product_id"),data.getString("name")
+                                        ,data.getString("image_url").replace("localhost",Config.ip),data.getString("item_qty"),data.getString("total"),
+                                        data.getString("item_id"),data.getString("price")));
+                                grand=data.getString("total");
+                                d=d+Float.valueOf(grand);
 
 
 
+                            }
+                            grand2= String.valueOf(d);
+                            adapter=new Recycler_Cart_Items(arrayList,MyCart.this,cart_no);
+                            recyclerView.setAdapter(adapter);
+                            all_total.setText(grand2);
+
+                        }
+
+
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                            loading.dismiss();
+                        }
                     }
-                    grand2= String.valueOf(d);
-                    adapter=new Recycler_Cart_Items(arrayList,MyCart.this,cart_no);
-                    recyclerView.setAdapter(adapter);
-                    all_total.setText(grand2);
 
-                }
-
-
-                catch (JSONException e) {
-                    e.printStackTrace();
-                    loading.dismiss();
-                }
 
 
 
