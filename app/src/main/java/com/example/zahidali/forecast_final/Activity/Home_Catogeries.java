@@ -55,7 +55,8 @@ public class Home_Catogeries extends AppCompatActivity {
         tabLayout = (TabLayout)findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
     }
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager)
+    {
         Home_Cat_Pager_Adapter adapter = new Home_Cat_Pager_Adapter(getSupportFragmentManager());
         adapter.addFragment(new Home(), "HOME");
         adapter.addFragment(new Categoris(), "CATEGORIES");
