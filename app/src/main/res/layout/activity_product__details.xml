@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Product Name"
+        android:textStyle="italic"
         android:gravity="center"
         android:textColor="@color/jumbo"
         android:id="@+id/p_name"
@@ -34,34 +35,130 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="2"
         android:padding="5dp"
         android:layout_marginLeft="5dp"
         android:orientation="horizontal">
 
         <Spinner
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
+            android:layout_weight="1"
             android:id="@+id/spinner_size"
             >
 
         </Spinner>
         <Spinner
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:id="@+id/spinner_color"
             android:layout_marginLeft="10dp"
             android:gravity="center">
         </Spinner>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:weightSum="2"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/jumbo"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:text="Availability"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_qnty"
+            android:gravity="center"
+            android:textColor="@color/jumbo" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:weightSum="2"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textColor="@color/jumbo"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:text="Quantity"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/tv_qty"
+                android:gravity="center"
+                android:textColor="@color/jumbo" />
+        </LinearLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:gravity="right"
+            android:layout_marginLeft="15dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Quantity=1"
+            android:inputType="number"
+            android:id="@+id/ed_qty"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textStyle="italic|bold"
+        android:gravity="center"
+        android:textColor="@color/jumbo"
+        android:textSize="25sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+android:weightSum="2"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textColor="@color/jumbo"
-                android:text="PKR"
+                android:text="Original"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_gravity="center" />
@@ -76,51 +173,37 @@
                 android:layout_gravity="center"
                 android:textColorHint="@color/jumbo" />
         </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:textColor="@color/jumbo"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:text="Availability"
-
-            />
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/tv_qnty"
-            android:gravity="center"
-            android:textColor="@color/jumbo" />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="15dp"
-            android:gravity="right"
-            android:layout_marginLeft="15dp"
-            android:layout_height="50dp"
-            android:hint="Quantity=1"
-            android:inputType="number"
-            android:id="@+id/ed_qty"/>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/jumbo"
+                android:text="Discounted"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_disprice"
+                android:textColor="@color/jumbo"
+                android:textSize="14dp"
+                android:hint="N/A"
+                android:layout_gravity="center"
+                android:textColorHint="@color/jumbo" />
+        </LinearLayout>
     </LinearLayout>
     <Button
         android:layout_gravity="center"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/buy"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:background="@color/green"
         android:textColor="@color/white"

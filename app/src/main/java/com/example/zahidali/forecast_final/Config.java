@@ -56,6 +56,7 @@ public class Config {
     public static final String URL_PRODUCT_DETAILS= "http://forecast.com.pk/get_product_details.php";
     public static final String URL_PRODUCT_DETAILS_CONFIGURE= "http://forecast.com.pk/congig_details_prooo_demo.php";
     public static final String URL_BASE_WEBVIEW= "http://www.forecast.com.pk/index.php";
+    public static final String URL_INVENTORY= "http://www.forecast.com.pk/inventory.php";
 //////////SHOPPING CART APIS////////////////
     public static final String URL_ADD_TO_CART="http://forecast.com.pk/add_to_cart.php";
     public static final String URL_SHOW_CART="http://forecast.com.pk/getting_quote_items.php";

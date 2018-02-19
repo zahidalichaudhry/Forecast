@@ -2,6 +2,7 @@ package com.example.zahidali.forecast_final.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +65,16 @@ public class Order_Details extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
+            }
+        });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);
         layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);

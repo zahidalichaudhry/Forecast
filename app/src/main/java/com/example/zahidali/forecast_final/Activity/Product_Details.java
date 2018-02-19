@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.zahidali.forecast_final.Config;
+import com.example.zahidali.forecast_final.PojoClasses.All_product_pojo;
 import com.example.zahidali.forecast_final.PojoClasses.Spinner_attribute_Pojo;
 import com.example.zahidali.forecast_final.R;
 
@@ -43,15 +45,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Product_Details extends AppCompatActivity {
-    String P_id;
-    TextView name,tv_aval,tv_price;
+    String P_id,sku;
+    TextView name,tv_aval,tv_price,tv_qty,tv_disprice;
     ImageView imageView;
     EditText ed_qty;
     Spinner s_color,s_size;
     Button Buy;
+    String quantity1;
+    String p_type;
+    float given;
+    float enter;
+    String Build_Sku;
     ArrayList<Spinner_attribute_Pojo> arrayListcolor= new ArrayList<>();
     ArrayList<Spinner_attribute_Pojo> arrayListsize= new ArrayList<>();
     String value_indexc="",value_indexs="";
+    String color_name="",size_name="";
     String atr_id2,atr_id;
     String cart_no=null;
 
@@ -82,8 +90,19 @@ public class Product_Details extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
+            }
+        });
         final Intent intent=getIntent();
         P_id=intent.getStringExtra("product_id");
+        sku=intent.getStringExtra("SKU");
         name=(TextView)findViewById(R.id.p_name);
         imageView=(ImageView)findViewById(R.id.p_image);
         ed_qty=(EditText)findViewById(R.id.ed_qty);
@@ -91,6 +110,8 @@ public class Product_Details extends AppCompatActivity {
         s_color=(Spinner)findViewById(R.id.spinner_color) ;
         s_size=(Spinner)findViewById(R.id.spinner_size);
         tv_aval=(TextView)findViewById(R.id.tv_qnty);
+        tv_qty=(TextView)findViewById(R.id.tv_qty);
+        tv_disprice=(TextView)findViewById(R.id.tv_disprice);
         Buy=(Button)findViewById(R.id.buy);
         Buy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +121,79 @@ public class Product_Details extends AppCompatActivity {
 
                     if (cart_no==null)
                     {
-                        ADDTOCART();
+                        if (p_type.equals("configurable"))
+                        {
+                            if (!color_name.equals("") && !size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+color_name+"-"+size_name;
+                                ChekgivenQuantity();
+//                            ADDTOCART();
+                            } else if (!color_name.equals("")&& size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+color_name;
+                                ChekgivenQuantity();
+//                            ADDTOCART();
+                            }
+                            else if (color_name.equals("")&& !size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+size_name;
+                                ChekgivenQuantity();
+//                            ADDTOCART();
+                            }
+
+                        }else
+                            {
+                                given=Float.valueOf(quantity1);
+                                enter=Float.valueOf(ed_qty.getText().toString());
+                               if (given>enter)
+                               {
+                                     ADDTOCART();
+                               }
+                               else
+
+                                   {
+                                       Toast.makeText(getApplicationContext(), "Please Reduce The Quantity" , Toast.LENGTH_SHORT).show();
+                                   }
+                            }
+
 
                     }else
                     {
-                        ADDTOCARTWITHCARTNO();
+                        if (p_type.equals("configurable"))
+                        {
+                            if (!color_name.equals("") && !size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+color_name+"-"+size_name;
+                                ChekgivenQuantity_2();
+//                            ADDTOCART();
+                            } else if (!color_name.equals("")&& size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+color_name;
+                                ChekgivenQuantity_2();
+//                            ADDTOCART();
+                            }
+                            else if (color_name.equals("")&& !size_name.equals(""))
+                            {
+                                Build_Sku=sku+"-"+size_name;
+                                ChekgivenQuantity_2();
+//                            ADDTOCART();
+                            }
+                        }
+                        else
+                        {
+                            given=Float.valueOf(quantity1);
+                            enter=Float.valueOf(ed_qty.getText().toString());
+                            if (given>enter)
+                            {
+                                ADDTOCARTWITHCARTNO();
+                            }
+                            else
+
+                            {
+                                Toast.makeText(getApplicationContext(), "Please Reduce The Quantity" , Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
                     }
 
 
@@ -115,6 +204,7 @@ public class Product_Details extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner_attribute_Pojo country = (Spinner_attribute_Pojo) parent.getSelectedItem();
                 value_indexc=country.getValue_index().toString();
+                size_name=country.getLabel().toString();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -126,6 +216,7 @@ public class Product_Details extends AppCompatActivity {
 
                 Spinner_attribute_Pojo country = (Spinner_attribute_Pojo) parent.getSelectedItem();
                 value_indexs=country.getValue_index().toString();
+                color_name=country.getLabel().toString();
 //                Toast.makeText(context, "Country ID: "+country.getId()+",  Country Name : "+country.getName(), Toast.LENGTH_SHORT).show();
             }
 
@@ -148,27 +239,26 @@ public class Product_Details extends AppCompatActivity {
                     String p_sku = object.getString("sku");
                     String p_img_url=object.getString("img").replace("localhost",Config.ip);
                     String p_des=object.getString("proName");
-                    String p_type=object.getString("type_id");
+                 p_type=object.getString("type_id");
                     String p_quantity=object.getString("product_quantity");
                     String P_dis_price=object.getString("discount_price");
+                    JSONArray quantity=object.getJSONArray("Qunatity");
+                    JSONObject data=quantity.getJSONObject(0);
+                    quantity1=data.getString("qty");
+
 
 
 
                     Glide.with(Product_Details.this).load(p_img_url).into(imageView);
                     name.setText(p_des);
                     tv_aval.setText("In Stock");
-                    if (P_dis_price==null)
-                    {
-                        tv_price.setText(p_price);
-                    }
-                    else
-                        {
-                            tv_price.setText(P_dis_price);
-                        }
+                    tv_price.setText(p_price);
+                    tv_disprice.setText(P_dis_price);
+
 
                     if (p_quantity.equals("0"))
                     {
-//                        tv_aval.setText("Out Of Stock");
+//                      tv_aval.setText("Out Of Stock");
                         tv_aval.setText("Out Of Stock");
                         tv_aval.setTextColor(R.color.red);
                         Buy.setEnabled(false);
@@ -191,6 +281,7 @@ public class Product_Details extends AppCompatActivity {
                         ed_qty.setEnabled(true);
                         s_color.setVisibility(View.GONE);
                         s_size.setVisibility(View.GONE);
+                        tv_qty.setText(quantity1);
                     }
 
                 } catch (JSONException e) {
@@ -212,6 +303,7 @@ public class Product_Details extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("product_id", P_id);
+                params.put("sku", sku);
                 return params;
             }
         };
@@ -222,7 +314,119 @@ public class Product_Details extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
     }
-////////////////////////ADD TO CART ON EXISTING ORDER//////////////////////////
+
+    private void ChekgivenQuantity_2()
+    {
+        loading = ProgressDialog.show(this,"Checking Availability...","Please Wait...",false,false);
+        StringRequest request = new StringRequest(Request.Method.POST, Config.URL_INVENTORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                loading.dismiss();
+                try {
+                    JSONObject main=new JSONObject(response);
+                    JSONArray quantyCOnfig=main.getJSONArray("Qunatity");
+                    JSONObject data=quantyCOnfig.getJSONObject(0);
+                    quantity1=data.getString("qty");
+                    given=Float.valueOf(quantity1);
+                    enter=Float.valueOf(ed_qty.getText().toString());
+                    if (given>enter)
+                    {
+                        ADDTOCART();
+                    }
+                    else
+
+                    {
+                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity From"+quantity1 , Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  Log.e("Error",error.printStackTrace());
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
+
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("sku", Build_Sku);
+                return params;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(request);
+    }
+
+    //////////////////Configureable Quantity////////////////////
+    private void ChekgivenQuantity()
+    {
+        loading = ProgressDialog.show(this,"Checking Availability...","Please Wait...",false,false);
+        StringRequest request = new StringRequest(Request.Method.POST, Config.URL_INVENTORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                loading.dismiss();
+                try {
+                    JSONObject main=new JSONObject(response);
+                    JSONArray quantyCOnfig=main.getJSONArray("Qunatity");
+                    JSONObject data=quantyCOnfig.getJSONObject(0);
+                    quantity1=data.getString("qty");
+                    given=Float.valueOf(quantity1);
+                    enter=Float.valueOf(ed_qty.getText().toString());
+                    if (given>enter)
+                    {
+                        ADDTOCART();
+                    }
+                    else
+
+                    {
+                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity From"+quantity1 , Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  Log.e("Error",error.printStackTrace());
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
+
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("sku", Build_Sku);
+                return params;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(request);
+    }
+//////////////////////////////////////////////////////
+    ////////////////////////ADD TO CART ON EXISTING ORDER//////////////////////////
     private void ADDTOCARTWITHCARTNO()
     {
         loading = ProgressDialog.show(this,"Adding...","Please Wait...",false,false);
@@ -248,7 +452,7 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -308,7 +512,7 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This Product Is Out of Stock", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -357,7 +561,7 @@ public class Product_Details extends AppCompatActivity {
         chek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(Product_Details.this,Check_Out.class);
+                Intent intent =new Intent(Product_Details.this,MyCart.class);
                 startActivity(intent);
             }
         });

@@ -49,7 +49,7 @@ public class Recycler_Adapter_All_Products extends RecyclerView.Adapter<Recycler
             public void onClick(View v) {
                 Intent intent = new Intent(activity, Product_Details.class);
                 intent.putExtra("product_id",arrayList.get(position).getProduct_id());
-                activity.finish();
+                intent.putExtra("SKU",arrayList.get(position).getSKU());
                 activity.startActivity(intent);
             }
         });

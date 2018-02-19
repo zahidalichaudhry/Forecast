@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,6 +68,16 @@ public class MyCart extends AppCompatActivity {
                 Intent intent=new Intent(MyCart.this,Home_Catogeries.class);
 
                 startActivity(intent);
+            }
+        });
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
             }
         });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);

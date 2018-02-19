@@ -2,6 +2,7 @@ package com.example.zahidali.forecast_final.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -68,6 +69,16 @@ public class All_Products extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
+            }
+        });
         recyclerView=(RecyclerView)findViewById(R.id.model_recyclerView);
         layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
@@ -94,7 +105,7 @@ public class All_Products extends AppCompatActivity {
                             String num= String.valueOf(i);
                             JSONObject data=abc.getJSONObject(num);
                             arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                    ,data.getString("img_url").replace("localhost",Config.ip)));
+                                    ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")));
                         }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");

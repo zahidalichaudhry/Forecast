@@ -8,11 +8,21 @@ public class All_product_pojo {
     private String product_id;
     private String pro_name;
     private String img_url;
+    private String SKU;
 
-    public All_product_pojo(String product_id, String pro_name, String img_url) {
+    public All_product_pojo(String product_id, String pro_name, String img_url,String SKU) {
         this.product_id = product_id;
         this.pro_name = pro_name;
         this.img_url = img_url;
+        this.SKU = SKU;
+    }
+
+    public String getSKU() {
+        return SKU;
+    }
+
+    public void setSKU(String SKU) {
+        this.SKU = SKU;
     }
 
     public String getProduct_id() {

@@ -223,7 +223,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
                         String num= String.valueOf(i);
                         JSONObject data=abc.getJSONObject(num);
                         arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                ,data.getString("img_url").replace("localhost",Config.ip)));
+                                ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")));
                     }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");

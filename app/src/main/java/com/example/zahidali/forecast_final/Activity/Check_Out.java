@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,6 +67,16 @@ public class Check_Out extends AppCompatActivity {
                 Check_Out.super.onBackPressed();
             }
         });
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
+            }
+        });
         detail=(LinearLayout)findViewById(R.id.detail);
         place=(LinearLayout)findViewById(R.id.place);
         fname=(EditText)findViewById(R.id.cfname);
@@ -119,11 +130,11 @@ public class Check_Out extends AppCompatActivity {
                 final String user_email = email.getText().toString().trim();
                 if (fname.getText().length()==0) {
                     fname.requestFocus();
-                    fname.setError(Html.fromHtml("<font color='red'>Please Enter Your Name</font>"));
+                    fname.setError(Html.fromHtml("<font color='red'>Please Enter Your First Name</font>"));
                 }
                 else if (lastname.getText().length()==0) {
                     lastname.requestFocus();
-                    lastname.setError(Html.fromHtml("<font color='red'>Please Enter Username</font>"));
+                    lastname.setError(Html.fromHtml("<font color='red'>Please Enter LastName</font>"));
                 }
                 else if (email.getText().length()==0) {
                     email.requestFocus();
@@ -131,40 +142,40 @@ public class Check_Out extends AppCompatActivity {
                 }
                 else if (user_email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
                     email.requestFocus();
-                    email.setError(Html.fromHtml("<font color='red'>Invalid Email Address</font>"));
+                    email.setError(Html.fromHtml("<font color='red'>Invalid Email Email</font>"));
                 }
-                else if (company.getText().length()==0) {
-                    company.requestFocus();
-                    company.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
-                }
+//                else if (company.getText().length()==0) {
+//                    company.requestFocus();
+//                    company.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+//                }
                 else if (address.getText().length()==0) {
                     address.requestFocus();
-                    address.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    address.setError(Html.fromHtml("<font color='red'>Please Enter A Address</font>"));
                 }
                 else if (city.getText().length()==0) {
                     city.requestFocus();
-                    city.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    city.setError(Html.fromHtml("<font color='red'>Please Enter A City</font>"));
                 }
                 else if (state.getText().length()==0) {
                     state.requestFocus();
-                    state.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    state.setError(Html.fromHtml("<font color='red'>Please Enter A State</font>"));
                 }
                 else if (zip.getText().length()==0) {
                     zip.requestFocus();
-                    zip.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    zip.setError(Html.fromHtml("<font color='red'>Please Enter A ZipCode</font>"));
                 }
                 else if (tele.getText().length()==0) {
                     tele.requestFocus();
-                    tele.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    tele.setError(Html.fromHtml("<font color='red'>Please Enter A Phone</font>"));
                 }
                 else if (country.getText().length()==0) {
                     country.requestFocus();
-                    country.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+                    country.setError(Html.fromHtml("<font color='red'>Please Enter A Country</font>"));
                 }
-                else if (fax.getText().length()==0) {
-                    fax.requestFocus();
-                    fax.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
-                }
+//                else if (fax.getText().length()==0) {
+//                    fax.requestFocus();
+//                    fax.setError(Html.fromHtml("<font color='red'>Please Enter A Password</font>"));
+//                }
                 else if (v == order) {
                     //RegisterOrder();
                     ufname=fname.getText().toString()+mobile;
@@ -227,24 +238,33 @@ public class Check_Out extends AppCompatActivity {
                     code2.setText(code1);
                     ship1.setText(shipping);
                     grand1.setText(total);
+                                    //Getting out sharedpreferences
+                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
+                //Getting editor
+                SharedPreferences.Editor editor = preferences.edit();
 
-//                    done.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //Getting out sharedpreferences
-//                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
-//                //Getting editor
-//                SharedPreferences.Editor editor = preferences.edit();
-//
-//                //Putting blank value to email
-//                editor.putString(Config.SHARED_PREF_CART_NO, null);
-//                editor.clear();
-//                editor.apply();
-////                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
-////                startActivity(intent);
-//            }
-//        });
+                //Putting blank value to email
+                editor.putString(Config.SHARED_PREF_CART_NO, null);
+                editor.clear();
+                editor.apply();
+
+                    done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Getting out sharedpreferences
+                SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
+                //Getting editor
+                SharedPreferences.Editor editor = preferences.edit();
+
+                //Putting blank value to email
+                editor.putString(Config.SHARED_PREF_CART_NO, null);
+                editor.clear();
+                editor.apply();
+                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
+                startActivity(intent);
+            }
+        });
 
 //                    OrderDetails();
 

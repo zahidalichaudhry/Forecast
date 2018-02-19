@@ -3,6 +3,7 @@ package com.example.zahidali.forecast_final.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -48,6 +49,16 @@ public class Home_Catogeries extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ImageView whatsapp=(ImageView)findViewById(R.id.whatsapp);
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("smsto:"+"+923111101102");
+                Intent i =new Intent(Intent.ACTION_SENDTO,uri);
+                i.setPackage("com.whatsapp");
+                startActivity(i);
+            }
+        });
         viewPager = (ViewPager)findViewById(R.id.viewpager);
 
 
@@ -62,7 +73,6 @@ public class Home_Catogeries extends AppCompatActivity {
         adapter.addFragment(new Categoris(), "CATEGORIES");
         viewPager.setAdapter(adapter);
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
