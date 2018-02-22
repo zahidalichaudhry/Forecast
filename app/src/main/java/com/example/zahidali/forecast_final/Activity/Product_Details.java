@@ -279,7 +279,7 @@ public class Product_Details extends AppCompatActivity {
                     orig=object.getString("price").replace(".0000"," ");
                     disco=object.getString("discount_price").replace(".0000"," ");
 
-                    Image_Url=object.getString("img").replace("localhost",Config.ip);
+                    Image_Url=object.getString("id");
 
                     Glide.with(Product_Details.this).load(p_img_url).into(imageView);
                     name.setText(p_des);
