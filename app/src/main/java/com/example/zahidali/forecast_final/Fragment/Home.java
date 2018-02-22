@@ -223,7 +223,8 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
                         String num= String.valueOf(i);
                         JSONObject data=abc.getJSONObject(num);
                         arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")));
+                                ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")
+                        ,data.getString("product_quantity")));
                     }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");
@@ -262,7 +263,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
 //                loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
                 new_a.setVisibility(View.GONE);
-                Toast.makeText(getActivity().getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
 
             }
         }

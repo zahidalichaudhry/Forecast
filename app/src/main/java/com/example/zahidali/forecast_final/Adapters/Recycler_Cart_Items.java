@@ -46,6 +46,8 @@ public class Recycler_Cart_Items extends RecyclerView.Adapter<Recycler_Cart_Item
     Activity activity;
     String cart_id;
     String itemid;
+    Float Price;
+    String Dis;
 
     public Recycler_Cart_Items(ArrayList<cart_item_pojo> arrayList, Context context,String cart_id)
     {
@@ -64,9 +66,22 @@ public class Recycler_Cart_Items extends RecyclerView.Adapter<Recycler_Cart_Item
     public void onBindViewHolder(Recycler_Cart_Items.MyViewHolder holder, final int position) {
         Glide.with(activity).load(arrayList.get(position).getImg_url()).into(holder.imageView);
         holder.p_name.setText(arrayList.get(position).getName());
-        holder.item_price.setText(arrayList.get(position).getPrice());
+
         holder.p_qty.setText(arrayList.get(position).getItem_qty());
-        holder.total_price.setText(arrayList.get(position).getTotal());
+//        holder.total_price.setText(arrayList.get(position).getTotal());
+        Dis=arrayList.get(position).getDis();
+        if (Dis.equals(null))
+        {
+            holder.total_price.setText(arrayList.get(position).getTotal());
+            holder.item_price.setText(arrayList.get(position).getPrice());
+
+        }else
+            {
+                Price=Float.valueOf(arrayList.get(position).getDis())*Float.valueOf(arrayList.get(position).getItem_qty());
+                holder.total_price.setText(String.valueOf(Price));
+                holder.item_price.setText(arrayList.get(position).getDis());
+
+            }
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

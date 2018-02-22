@@ -114,24 +114,24 @@
                 android:textColorHint="@color/black" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="10dp"
-            android:background="#0000">
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="35dp"-->
+            <!--android:layout_marginRight="35dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="#0000">-->
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/company"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Company"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/black"
-                android:textColorHint="@color/black" />
-        </android.support.design.widget.TextInputLayout>
+            <!--<android.support.design.widget.TextInputEditText-->
+                <!--android:id="@+id/company"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Company"-->
+                <!--android:inputType="text"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textColorHighlight="@color/black"-->
+                <!--android:textColorHint="@color/black" />-->
+        <!--</android.support.design.widget.TextInputLayout>-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -190,24 +190,24 @@
                 android:textColorHint="@color/black" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="10dp"
-            android:background="#0000">
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="35dp"-->
+            <!--android:layout_marginRight="35dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="#0000">-->
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/zip"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Zip Code"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/black"
-                android:textColorHint="@color/black" />
-        </android.support.design.widget.TextInputLayout>
+            <!--<android.support.design.widget.TextInputEditText-->
+                <!--android:id="@+id/zip"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Zip Code"-->
+                <!--android:inputType="text"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textColorHighlight="@color/black"-->
+                <!--android:textColorHint="@color/black" />-->
+        <!--</android.support.design.widget.TextInputLayout>-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,16 +48,18 @@ import java.util.Map;
 
 public class Product_Details extends AppCompatActivity {
     String P_id,sku;
-    TextView name,tv_aval,tv_price,tv_qty,tv_disprice;
+    TextView name,tv_aval,tv_price,tv_disprice;
     ImageView imageView;
     EditText ed_qty;
     Spinner s_color,s_size;
     Button Buy;
-    String quantity1;
+    String quantity1,orig,disco;
+    LinearLayout spinners;
     String p_type;
     float given;
     float enter;
     String Build_Sku;
+    String Image_Url=null;
     ArrayList<Spinner_attribute_Pojo> arrayListcolor= new ArrayList<>();
     ArrayList<Spinner_attribute_Pojo> arrayListsize= new ArrayList<>();
     String value_indexc="",value_indexs="";
@@ -103,6 +107,7 @@ public class Product_Details extends AppCompatActivity {
         final Intent intent=getIntent();
         P_id=intent.getStringExtra("product_id");
         sku=intent.getStringExtra("SKU");
+        spinners=(LinearLayout)findViewById(R.id.spinners);
         name=(TextView)findViewById(R.id.p_name);
         imageView=(ImageView)findViewById(R.id.p_image);
         ed_qty=(EditText)findViewById(R.id.ed_qty);
@@ -110,9 +115,35 @@ public class Product_Details extends AppCompatActivity {
         s_color=(Spinner)findViewById(R.id.spinner_color) ;
         s_size=(Spinner)findViewById(R.id.spinner_size);
         tv_aval=(TextView)findViewById(R.id.tv_qnty);
-        tv_qty=(TextView)findViewById(R.id.tv_qty);
+//        tv_qty=(TextView)findViewById(R.id.tv_qty);
         tv_disprice=(TextView)findViewById(R.id.tv_disprice);
         Buy=(Button)findViewById(R.id.buy);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (Image_Url==null)
+                {
+                    Toast.makeText(getApplicationContext(), "Network Connection Error No Image" , Toast.LENGTH_SHORT).show();
+                }
+                else
+                    {
+                        Intent intent=new Intent(Product_Details.this,FullScreenImage.class);
+                        intent.putExtra("URL",Image_Url);
+                        startActivity(intent);
+                    }
+
+////                ImageViewPopUpHelper.enablePopUpOnClick(activity,holder.Thumbnail);
+//                Intent intent = new Intent(Product_Details.this,FullScreenImage.class);
+//               imageView.buildDrawingCache();
+//                Bitmap bitmap =imageView.getDrawingCache();
+//                Bundle extras = new Bundle();
+//                extras.putParcelable("imagebitmap", bitmap);
+//                intent.putExtras(extras);
+//                startActivity(intent);
+            }
+        });
         Buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +176,7 @@ public class Product_Details extends AppCompatActivity {
                             {
                                 given=Float.valueOf(quantity1);
                                 enter=Float.valueOf(ed_qty.getText().toString());
-                               if (given>enter)
+                               if (given>=enter)
                                {
                                      ADDTOCART();
                                }
@@ -183,7 +214,7 @@ public class Product_Details extends AppCompatActivity {
                         {
                             given=Float.valueOf(quantity1);
                             enter=Float.valueOf(ed_qty.getText().toString());
-                            if (given>enter)
+                            if (given>=enter)
                             {
                                 ADDTOCARTWITHCARTNO();
                             }
@@ -245,15 +276,16 @@ public class Product_Details extends AppCompatActivity {
                     JSONArray quantity=object.getJSONArray("Qunatity");
                     JSONObject data=quantity.getJSONObject(0);
                     quantity1=data.getString("qty");
+                    orig=object.getString("price").replace(".0000"," ");
+                    disco=object.getString("discount_price").replace(".0000"," ");
 
-
-
+                    Image_Url=object.getString("img").replace("localhost",Config.ip);
 
                     Glide.with(Product_Details.this).load(p_img_url).into(imageView);
                     name.setText(p_des);
                     tv_aval.setText("In Stock");
-                    tv_price.setText(p_price);
-                    tv_disprice.setText(P_dis_price);
+                    tv_price.setText(orig);
+                    tv_disprice.setText(disco);
 
 
                     if (p_quantity.equals("0"))
@@ -272,6 +304,7 @@ public class Product_Details extends AppCompatActivity {
                             Buy.setEnabled(true);
                             s_color.setVisibility(View.VISIBLE);
                              s_size.setVisibility(View.VISIBLE);
+                        spinners.setVisibility(View.VISIBLE);
                             ed_qty.setVisibility(View.VISIBLE);
                             productifConfigure();
                            // ed_qty.setVisibility(View.GONE);
@@ -281,7 +314,8 @@ public class Product_Details extends AppCompatActivity {
                         ed_qty.setEnabled(true);
                         s_color.setVisibility(View.GONE);
                         s_size.setVisibility(View.GONE);
-                        tv_qty.setText(quantity1);
+                        spinners.setVisibility(View.GONE);
+//                        tv_qty.setText(quantity1);
                     }
 
                 } catch (JSONException e) {
@@ -294,7 +328,8 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Network Connection Error" , Toast.LENGTH_SHORT).show();
+  //              Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -330,17 +365,18 @@ public class Product_Details extends AppCompatActivity {
                     quantity1=data.getString("qty");
                     given=Float.valueOf(quantity1);
                     enter=Float.valueOf(ed_qty.getText().toString());
-                    if (given>enter)
+                    if (given>=enter)
                     {
                         ADDTOCART();
                     }
                     else
 
                     {
-                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity From"+quantity1 , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity Amount Available ="+quantity1 , Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "This Product is Out of stock" , Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -350,7 +386,7 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This Product is Out of stock" , Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -386,14 +422,14 @@ public class Product_Details extends AppCompatActivity {
                     quantity1=data.getString("qty");
                     given=Float.valueOf(quantity1);
                     enter=Float.valueOf(ed_qty.getText().toString());
-                    if (given>enter)
+                    if (given>=enter)
                     {
                         ADDTOCART();
                     }
                     else
 
                     {
-                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity From"+quantity1 , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Please Reduce The Quantity Amount Available= "+quantity1 , Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -406,7 +442,7 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This Product is Out of stock" , Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -452,7 +488,7 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "This Product is Out oF stock" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "This Product is Out of stock" , Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -682,7 +718,8 @@ public class Product_Details extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Network Connection Error" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
 
             }
         }

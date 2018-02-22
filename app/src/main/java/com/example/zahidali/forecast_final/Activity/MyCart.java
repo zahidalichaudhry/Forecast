@@ -46,9 +46,9 @@ public class MyCart extends AppCompatActivity {
     Recycler_Cart_Items adapter;
     ArrayList<cart_item_pojo> arrayList=new ArrayList<>();
     String cart_no=null;
-    String grand,grand2;
+    String grand,grand2,discount;
     int b,c;
-    float d,e;
+    float d=150,e;
     TextView all_total;
     Button chek;
     @Override
@@ -66,7 +66,6 @@ public class MyCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MyCart.this,Home_Catogeries.class);
-
                 startActivity(intent);
             }
         });
@@ -103,7 +102,6 @@ public class MyCart extends AppCompatActivity {
                     Intent intent =new Intent(MyCart.this,Check_Out.class);
                     startActivity(intent);
                 }
-
             }
         });
         layoutManager=new GridLayoutManager(this,1);
@@ -128,18 +126,13 @@ public class MyCart extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_SHOW_CART, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-
                 loading.dismiss();
-
                 if (response.equals("[]"))
                 {
                     Toast.makeText(MyCart.this,"There is no item in the Cart",Toast.LENGTH_LONG).show();
                     chek.setEnabled(false);
                 }else
                     {
-
-
                         try {
                             JSONArray abc= new JSONArray(response);
                             for (int i=0;i<abc.length();i=i+2)
@@ -147,30 +140,27 @@ public class MyCart extends AppCompatActivity {
                                 JSONObject data=abc.getJSONObject(i);
                                 arrayList.add(new cart_item_pojo(data.getString("product_id"),data.getString("name")
                                         ,data.getString("image_url").replace("localhost",Config.ip),data.getString("item_qty"),data.getString("total"),
-                                        data.getString("item_id"),data.getString("price")));
+                                        data.getString("item_id"),data.getString("price"),data.getString("discount_price")));
                                 grand=data.getString("total");
-                                d=d+Float.valueOf(grand);
-
-
-
+                                discount=data.getString("discount_price");
+                                if (data.getString("discount_price").equals(null))
+                                {
+                                    d=d+Float.valueOf(data.getString("price"))*Float.valueOf(data.getString("item_qty"));
+                                }else
+                                    {
+                                        d=d+Float.valueOf(data.getString("discount_price"))*Float.valueOf(data.getString("item_qty"));
+                                    }
                             }
                             grand2= String.valueOf(d);
                             adapter=new Recycler_Cart_Items(arrayList,MyCart.this,cart_no);
                             recyclerView.setAdapter(adapter);
                             all_total.setText(grand2);
-
                         }
-
-
                         catch (JSONException e) {
                             e.printStackTrace();
                             loading.dismiss();
                         }
                     }
-
-
-
-
                 //  tvSurah.setText("Response is: "+ response.substring(0,500));
             }
 
@@ -179,7 +169,8 @@ public class MyCart extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
-                Toast.makeText(MyCart.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MyCart.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyCart.this.getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
 
             }
         }

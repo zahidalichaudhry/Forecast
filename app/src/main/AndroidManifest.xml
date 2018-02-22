@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zahidali.forecast_final">
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/fc"
@@ -26,9 +27,9 @@
         <activity android:name=".Activity.All_Products" />
         <activity android:name=".Activity.Product_Details" />
         <activity android:name=".Activity.Web_View" />
-        <activity android:name=".Activity.Check_Out"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+        <activity
+            android:name=".Activity.Check_Out"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity android:name=".Activity.MyCart">
 
             <!-- <intent-filter> -->
@@ -38,7 +39,8 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".Activity.Order_Details"></activity>
+        <activity android:name=".Activity.Order_Details" />
+        <activity android:name=".Activity.FullScreenImage"></activity>
     </application>
 
 </manifest>

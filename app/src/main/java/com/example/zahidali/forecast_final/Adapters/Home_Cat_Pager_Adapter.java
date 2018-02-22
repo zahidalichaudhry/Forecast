@@ -3,10 +3,6 @@ package com.example.zahidali.forecast_final.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import com.example.zahidali.forecast_final.Fragment.Categoris;
-import com.example.zahidali.forecast_final.Fragment.Home;
-
 import java.util.ArrayList;
 import java.util.List;
 

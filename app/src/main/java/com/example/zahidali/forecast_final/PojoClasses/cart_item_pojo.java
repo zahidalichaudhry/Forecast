@@ -13,8 +13,9 @@ public class cart_item_pojo
     private String total;
     private String item_id;
     private String  price;
+    private String Dis;
 
-    public cart_item_pojo(String product_id, String name, String img_url, String item_qty, String total, String item_id, String price) {
+    public cart_item_pojo(String product_id, String name, String img_url, String item_qty, String total, String item_id, String price,String Dis) {
         this.product_id = product_id;
         this.name = name;
         this.img_url = img_url;
@@ -22,6 +23,15 @@ public class cart_item_pojo
         this.total = total;
         this.item_id = item_id;
         this.price = price;
+        this.Dis=Dis;
+    }
+
+    public String getDis() {
+        return Dis;
+    }
+
+    public void setDis(String dis) {
+        Dis = dis;
     }
 
     public String getProduct_id() {

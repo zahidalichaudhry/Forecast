@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Check_Out extends AppCompatActivity {
-    EditText fname,lastname,email,company,address,city,state,zip,tele,country,fax;
+    EditText fname,lastname,email,address,city,state,tele,country,fax;
    private String ufname,ulastname,uemail,ucompany,uaddress,ucity,ustate,uzip,utele,ucountry,ufax;
   private   Button review,order;
     String cart_no=null;
@@ -82,11 +82,11 @@ public class Check_Out extends AppCompatActivity {
         fname=(EditText)findViewById(R.id.cfname);
         lastname=(EditText)findViewById(R.id.clastname);
         email=(EditText)findViewById(R.id.uemail);
-        company=(EditText)findViewById(R.id.company);
+//        company=(EditText)findViewById(R.id.company);
         address=(EditText)findViewById(R.id.address);
         city=(EditText)findViewById(R.id.city);
         state=(EditText)findViewById(R.id.stat);
-        zip=(EditText)findViewById(R.id.zip);
+//        zip=(EditText)findViewById(R.id.zip);
         tele=(EditText)findViewById(R.id.tele);
         country=(EditText)findViewById(R.id.country);
         fax=(EditText)findViewById(R.id.fax);
@@ -160,10 +160,6 @@ public class Check_Out extends AppCompatActivity {
                     state.requestFocus();
                     state.setError(Html.fromHtml("<font color='red'>Please Enter A State</font>"));
                 }
-                else if (zip.getText().length()==0) {
-                    zip.requestFocus();
-                    zip.setError(Html.fromHtml("<font color='red'>Please Enter A ZipCode</font>"));
-                }
                 else if (tele.getText().length()==0) {
                     tele.requestFocus();
                     tele.setError(Html.fromHtml("<font color='red'>Please Enter A Phone</font>"));
@@ -181,11 +177,11 @@ public class Check_Out extends AppCompatActivity {
                     ufname=fname.getText().toString()+mobile;
                     ulastname=lastname.getText().toString();
                     uemail=email.getText().toString();
-                    ucompany=company.getText().toString();
+                    ucompany="Mobile";
                     uaddress=address.getText().toString();
                     ucity=city.getText().toString();
                     ustate=state.getText().toString();
-                    uzip=zip.getText().toString();
+                    uzip="Mobile";
                     utele=tele.getText().toString();
                     ucountry="PK";
                     ufax=fax.getText().toString();
@@ -279,7 +275,7 @@ public class Check_Out extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //  Log.e("Error",error.printStackTrace());
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Network Error" , Toast.LENGTH_SHORT).show();
 
             }
         }

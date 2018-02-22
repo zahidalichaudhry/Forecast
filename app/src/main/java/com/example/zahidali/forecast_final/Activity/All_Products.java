@@ -102,10 +102,16 @@ public class All_Products extends AppCompatActivity {
                         JSONObject abc= new JSONObject(response);
                         for (int i=1;i<=abc.length();i++)
                         {
+
                             String num= String.valueOf(i);
                             JSONObject data=abc.getJSONObject(num);
-                            arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
-                                    ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")));
+                            if (data.getString("product_quantity").equals("1"))
+                            {
+                                arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
+                                        ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")
+                                        ,data.getString("product_quantity")));
+                            }
+
                         }
 
 //                        do {JSONObject data = new getJSONObject.JSONObject("abc");
@@ -144,7 +150,8 @@ public class All_Products extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 //  Log.e("Error",error.printStackTrace());
-                Toast.makeText(All_Products.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(All_Products.this.getApplicationContext(), "Network Connection Error" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(All_Products.this.getApplicationContext(), "Volley Error" + error, Toast.LENGTH_SHORT).show();
                 onBackPressed();
 
             }
@@ -170,6 +177,7 @@ public class All_Products extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
+        finish();
         startActivity(intent);
     }
 }
