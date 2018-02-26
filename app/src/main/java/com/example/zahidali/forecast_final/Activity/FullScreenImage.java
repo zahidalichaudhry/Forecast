@@ -49,6 +49,8 @@ import static java.lang.Math.tan;
 
 public class FullScreenImage extends AppCompatActivity {
     ImageView fullImage;
+    private ScaleGestureDetector scaleGestureDetector;
+    private Matrix matrix = new Matrix();
     String URl;
     private boolean exit = false;
     @Override
@@ -60,7 +62,7 @@ public class FullScreenImage extends AppCompatActivity {
         URl = intent.getStringExtra("URL");
 //        Glide.with(FullScreenImage.this).load(URl).into(fullImage);
 
-
+        scaleGestureDetector = new ScaleGestureDetector(this,new ScaleListener());
         StringRequest request = new StringRequest(Request.Method.POST, Config.URL_REMOVE_HD_IMAGE, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -104,5 +106,22 @@ public class FullScreenImage extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        scaleGestureDetector.onTouchEvent(ev);
+        return true;
+    }
+
+    private class ScaleListener extends ScaleGestureDetector.
+            SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            float scaleFactor = detector.getScaleFactor();
+            scaleFactor = Math.max(0.1f, Math.min(scaleFactor, 5.0f));
+            matrix.setScale(scaleFactor, scaleFactor);
+            fullImage.setImageMatrix(matrix);
+            return true;
+        }
     }
 }
