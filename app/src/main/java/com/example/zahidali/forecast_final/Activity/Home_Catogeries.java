@@ -60,8 +60,6 @@ public class Home_Catogeries extends AppCompatActivity {
             }
         });
         viewPager = (ViewPager)findViewById(R.id.viewpager);
-
-
         setupViewPager(viewPager);
         tabLayout = (TabLayout)findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
