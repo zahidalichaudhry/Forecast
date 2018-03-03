@@ -100,15 +100,15 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
         Glide.with(this).load(bajiImage).into(baji);
-        footer=(LinearLayout)view.findViewById(R.id.footer);
-        new_a=(TextView)view.findViewById(R.id.new_a);
-        footer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://itpvt.net/"));
-                startActivity(myIntent);
-            }
-        });
+            footer=(LinearLayout)view.findViewById(R.id.footer);
+            new_a=(TextView)view.findViewById(R.id.new_a);
+            footer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://itpvt.net/"));
+                    startActivity(myIntent);
+                }
+            });
         recyclerView=(RecyclerView)view.findViewById(R.id.model_recyclerView);
 //        layoutManager=new GridLayoutManager(getActivity(),1);
 

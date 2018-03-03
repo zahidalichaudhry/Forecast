@@ -27,7 +27,7 @@ public class Recycler_Adapter_Main_Catagories extends RecyclerView.Adapter<Recyc
 
     ArrayList<Categories> arrayList= new ArrayList<>();
     Activity activity;
-    String WEB_URL=Config.URL_BASE_WEBVIEW;
+        String WEB_URL=Config.URL_BASE_WEBVIEW;
 
     public Recycler_Adapter_Main_Catagories(ArrayList<Categories> arrayList, Context context)
     {

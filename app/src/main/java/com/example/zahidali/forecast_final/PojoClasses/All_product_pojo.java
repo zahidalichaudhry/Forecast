@@ -8,8 +8,8 @@ public class All_product_pojo {
     private String product_id;
     private String pro_name;
     private String img_url;
-    private String SKU;
-    private String QTY;
+            private String SKU;
+            private String QTY;
 
     public All_product_pojo(String product_id, String pro_name, String img_url,String SKU,String QTY) {
         this.product_id = product_id;
