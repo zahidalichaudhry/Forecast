@@ -100,7 +100,8 @@ public class All_Products extends AppCompatActivity {
 
                     try {
                         JSONObject abc= new JSONObject(response);
-                        for (int i=1;i<=abc.length();i++)
+                        int j=abc.length();
+                        for (int i=j;i>=1;i--)
                         {
 
                             String num= String.valueOf(i);
