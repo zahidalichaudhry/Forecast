@@ -63,14 +63,14 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
     String id;
     ArrayList<All_product_pojo> arrayList=new ArrayList<>();
     RecyclerView recyclerView;
-    String newArr_cat_id="60";
+    String newArr_cat_id="61";
     Recycler_Adapter_All_Products_new adapter;
     RecyclerView.LayoutManager layoutManager;
     private ProgressDialog loading;
 
       String menimage,womenimage,saleimage,bajiImage;
     static String path1,path2;
-    ImageView men,women,sale,baji;
+    ImageView sale,baji;
     TextView new_a;
         HashMap<String, String> HashMapForURL ;
     public Home() {
@@ -92,12 +92,12 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
         womenimage=Config.HOME_WOMEN;
         saleimage=Config.HOMW_SALE;
         bajiImage  = Config.HOME_FOOTWARE;
-        men=(ImageView)view.findViewById(R.id.men);
-        women=(ImageView)view.findViewById(R.id.women);
+//        men=(ImageView)view.findViewById(R.id.men);
+//        women=(ImageView)view.findViewById(R.id.women);
         sale=(ImageView)view.findViewById(R.id.sale);
         baji=(ImageView)view.findViewById(R.id.baji);
-        Glide.with(getActivity()).load(menimage).into(men);
-        Glide.with(getActivity()).load(womenimage).into(women);
+//        Glide.with(getActivity()).load(menimage).into(men);
+//        Glide.with(getActivity()).load(womenimage).into(women);
         Glide.with(getActivity()).load(saleimage).into(sale);
         Glide.with(this).load(bajiImage).into(baji);
             footer=(LinearLayout)view.findViewById(R.id.footer);
@@ -115,33 +115,33 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
 //        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         GetAllProducts();
-        men.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),All_Products.class);
-//                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
-//                    intent.putExtra("weburl",WEB_URL);
-                intent.putExtra("Id","57");
-                startActivity(intent);
-            }
-        });
-        women.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),All_Products.class);
-//                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
-//                    intent.putExtra("weburl",WEB_URL);
-                intent.putExtra("Id","58");
-                startActivity(intent);
-            }
-        });
+//        men.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getActivity(),All_Products.class);
+////                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
+////                    intent.putExtra("weburl",WEB_URL);
+//                intent.putExtra("Id","4");
+//                startActivity(intent);
+//            }
+//        });
+//        women.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(getActivity(),All_Products.class);
+////                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
+////                    intent.putExtra("weburl",WEB_URL);
+//                intent.putExtra("Id","5");
+//                startActivity(intent);
+//            }
+//        });
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),All_Products.class);
 //                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
 //                    intent.putExtra("weburl",WEB_URL);
-                intent.putExtra("Id","56");
+                intent.putExtra("Id","61");
                 startActivity(intent);
             }
         });
@@ -151,7 +151,7 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
                 Intent intent=new Intent(getActivity(),All_Products.class);
 //                    Intent intent=new Intent(Sub_Categories.this,Web_View.class);
 //                    intent.putExtra("weburl",WEB_URL);
-                intent.putExtra("Id","55");
+                intent.putExtra("Id","39");
                 startActivity(intent);
             }
         });
@@ -223,11 +223,11 @@ public class Home extends Fragment implements BaseSliderView.OnSliderClickListen
                     {
                         String num= String.valueOf(i);
                         JSONObject data=abc.getJSONObject(num);
-                        if (data.getString("product_quantity").equals("1"))
+                        if (data.getString("product_quantity").equals("1")&&data.getString("type_id").equals("configurable"))
                         {
                             arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
                                     ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")
-                                    ,data.getString("product_quantity")));
+                                    ,data.getString("product_quantity"),data.getString("price").replace(".0000","Rs")));
                         }
 
                     }

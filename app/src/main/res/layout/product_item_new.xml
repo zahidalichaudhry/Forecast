@@ -29,8 +29,19 @@
                 android:text="Film Name"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/gotham_book"
                 android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/tvprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Price"
+                android:fontFamily="@font/gotham_book"
+                android:layout_gravity="center"
+                android:textColor="@color/red"
+                android:textSize="14dp" />
 
         </LinearLayout>
 

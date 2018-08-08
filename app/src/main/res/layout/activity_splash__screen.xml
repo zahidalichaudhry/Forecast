@@ -14,8 +14,8 @@
         android:background="@color/tranpblack">
         <ImageView
             android:id="@+id/imgView"
-            android:layout_width="350dp"
-            android:layout_height="120dp"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="@drawable/forecast21" />
     </LinearLayout>

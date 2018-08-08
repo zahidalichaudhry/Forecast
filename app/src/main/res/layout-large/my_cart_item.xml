@@ -18,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/thumbnail"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY" />
         <LinearLayout
@@ -37,15 +37,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:padding="2dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:fontFamily="@font/gotham_book"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textColor="@color/white"
                 android:text="Name:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/gotham_book"
                     android:id="@+id/p_name"
@@ -61,15 +61,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:padding="2dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:layout_height="40dp"
+                    android:textSize="24sp"
                     android:fontFamily="@font/gotham_book"
                     android:textColor="@color/white"
                     android:text="Item Price:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/gotham_book"
                     android:id="@+id/item_price"
@@ -85,16 +85,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:padding="2dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:fontFamily="@font/gotham_book"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:text="Quantity:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_book"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:id="@+id/p_qty"
                     />
@@ -109,16 +109,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:padding="2dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:fontFamily="@font/gotham_book"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:text="Total Price:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_book"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     android:id="@+id/total_price"
                     />
@@ -127,7 +127,7 @@
             <Button
                 android:id="@+id/remove"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/gotham_book"
                 android:background="@color/green"

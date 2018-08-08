@@ -106,11 +106,11 @@ public class All_Products extends AppCompatActivity {
 
                             String num= String.valueOf(i);
                             JSONObject data=abc.getJSONObject(num);
-                            if (data.getString("product_quantity").equals("1"))
+                            if (data.getString("product_quantity").equals("1")&&data.getString("type_id").equals("configurable"))
                             {
                                 arrayList.add(new All_product_pojo(data.getString("product_id"),data.getString("pro_name")
                                         ,data.getString("img_url").replace("localhost",Config.ip),data.getString("sku")
-                                        ,data.getString("product_quantity")));
+                                        ,data.getString("product_quantity"),data.getString("price").replace(".0000","Rs")));
                             }
 
                         }
@@ -177,7 +177,7 @@ public class All_Products extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(All_Products.this,Home_Catogeries.class);
+        Intent intent=new Intent(All_Products.this,Starting.class);
         finish();
         startActivity(intent);
     }

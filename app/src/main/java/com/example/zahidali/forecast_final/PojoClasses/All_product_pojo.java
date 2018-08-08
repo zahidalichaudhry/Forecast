@@ -10,13 +10,23 @@ public class All_product_pojo {
     private String img_url;
             private String SKU;
             private String QTY;
+    private String Price;
 
-    public All_product_pojo(String product_id, String pro_name, String img_url,String SKU,String QTY) {
+    public All_product_pojo(String product_id, String pro_name, String img_url,String SKU,String QTY, String Price) {
         this.product_id = product_id;
         this.pro_name = pro_name;
         this.img_url = img_url;
         this.SKU = SKU;
         this.QTY=QTY;
+        this.Price = Price;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
     }
 
     public String getQTY() {

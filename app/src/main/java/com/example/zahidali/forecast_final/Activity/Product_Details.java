@@ -48,12 +48,13 @@ import java.util.Map;
 
 public class Product_Details extends AppCompatActivity {
     String P_id,sku;
-    TextView name,tv_aval,tv_price,tv_disprice;
+    TextView name,tv_aval,tv_price,tv_disprice,tv_website;
     ImageView imageView;
     EditText ed_qty;
     Spinner s_color,s_size;
     Button Buy;
     String quantity1,orig,disco;
+    LinearLayout footer;
     LinearLayout spinners;
     String p_type;
     float given;
@@ -117,7 +118,24 @@ public class Product_Details extends AppCompatActivity {
         tv_aval=(TextView)findViewById(R.id.tv_qnty);
 //        tv_qty=(TextView)findViewById(R.id.tv_qty);
         tv_disprice=(TextView)findViewById(R.id.tv_disprice);
+        tv_website=(TextView)findViewById(R.id.tv_website);
         Buy=(Button)findViewById(R.id.buy);
+        footer=(LinearLayout)findViewById(R.id.footer);
+        footer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://itpvt.net/"));
+                startActivity(myIntent);
+            }
+        });
+        tv_website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.forecast.com.pk/index.php/"));
+                startActivity(myIntent);
+
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,6 +189,12 @@ public class Product_Details extends AppCompatActivity {
                                 ChekgivenQuantity();
 //                            ADDTOCART();
                             }
+                            else if (color_name.equals("")&& size_name.equals(""))
+                            {
+                                Build_Sku=sku;
+                                ChekgivenQuantity();
+//                            ADDTOCART();
+                            }
 
                         }else
                             {
@@ -208,6 +232,11 @@ public class Product_Details extends AppCompatActivity {
                                 Build_Sku=sku+"-"+size_name;
                                 ChekgivenQuantity_2();
 //                            ADDTOCART();
+                            }
+                            else if (color_name.equals("")&& size_name.equals(""))
+                            {
+                                Build_Sku=sku;
+                                ChekgivenQuantity_2();
                             }
                         }
                         else
@@ -248,6 +277,501 @@ public class Product_Details extends AppCompatActivity {
                 Spinner_attribute_Pojo country = (Spinner_attribute_Pojo) parent.getSelectedItem();
                 value_indexs=country.getValue_index().toString();
                 color_name=country.getLabel().toString();
+//                if (country.getLabel().toString().equals("BLACK"))
+//                {
+//                    color_name="BLK";
+//                }
+//                else if (country.getLabel().toString().equals("AQUA BLUE"))
+//                {
+//                    color_name="A-BLUE";
+//                }
+//                else if (country.getLabel().toString().equals("AIR FORCE BLUE"))
+//                {
+//                    color_name="AFBLU";
+//                }
+//                else if (country.getLabel().toString().equals("APPLE GREEN"))
+//                {
+//                    color_name="AGRN";
+//                }
+//                else if (country.getLabel().toString().equals("APRICOT"))
+//                {
+//                    color_name="APCT";
+//                }
+//                else if (country.getLabel().toString().equals("BLACK GREY"))
+//                {
+//                    color_name="B GRY";
+//                }
+//                else if (country.getLabel().toString().equals("BLOOD RED"))
+//                {
+//                    color_name="B RED";
+//                }
+//                else if (country.getLabel().toString().equals("BLACK SILVER"))
+//                {
+//                    color_name="B SLVR";
+//                }
+//                else if (country.getLabel().toString().equals("Black Blue"))
+//                {
+//                    color_name="B-BLUE";
+//                }
+//                else if (country.getLabel().toString().equals("BEIGE"))
+//                {
+//                    color_name="BAIG";
+//                }
+//                else if (country.getLabel().toString().equals("BLACKISH BLUE"))
+//                {
+//                    color_name="BBLU";
+//                }
+//                else if (country.getLabel().toString().equals("BLACKISH BROWN"))
+//                {
+//                    color_name="BLKBRN";
+//                }
+//                else if (country.getLabel().toString().equals("BLUE"))
+//                {
+//                    color_name="BLU";
+//                }
+//                else if (country.getLabel().toString().equals("BLUISH GREY"))
+//                {
+//                    color_name="BLU GRY";
+//                }
+//                else if (country.getLabel().toString().equals("BURGUNDY"))
+//                {
+//                    color_name="BRGNDI";
+//                }
+//                else if (country.getLabel().toString().equals("BRICK"))
+//                {
+//                    color_name="BRK";
+//                }
+//                else if (country.getLabel().toString().equals("BORLAND"))
+//                {
+//                    color_name="BRLND";
+//                }
+//                else if (country.getLabel().toString().equals("BROWN"))
+//                {
+//                    color_name="BRN";
+//                }
+//                else if (country.getLabel().toString().equals("BRONZE"))
+//                {
+//                    color_name="BRNZ";
+//                }
+//                else if (country.getLabel().toString().equals("SEA SHELL"))
+//                {
+//                    color_name="C SHL";
+//                }
+//                else if (country.getLabel().toString().equals("CHARCOLE GREY"))
+//                {
+//                    color_name="C-GREY";
+//                }
+//                else if (country.getLabel().toString().equals("CHOCOLATE BROWN"))
+//                {
+//                    color_name="CBRN";
+//                }
+//                else if (country.getLabel().toString().equals("CHARCOLE"))
+//                {
+//                    color_name="CHR";
+//                }
+//                else if (country.getLabel().toString().equals("CHERRY RED"))
+//                {
+//                    color_name="CHRD";
+//                }
+//                else if (country.getLabel().toString().equals("CHEETA PRINT"))
+//                {
+//                    color_name="CHTHA";
+//                }
+//                else if (country.getLabel().toString().equals("CAMEL"))
+//                {
+//                    color_name="CML";
+//                }
+//                else if (country.getLabel().toString().equals("COFFEE"))
+//                {
+//                    color_name="COFE";
+//                }
+//                else if (country.getLabel().toString().equals("COPPER"))
+//                {
+//                    color_name="COPR";
+//                }
+//                else if (country.getLabel().toString().equals("CREAM"))
+//                {
+//                    color_name="CRM";
+//                }
+//                else if (country.getLabel().toString().equals("CRIMSON RED"))
+//                {
+//                    color_name="CRMRED";
+//                }
+//                else if (country.getLabel().toString().equals("CARROT"))
+//                {
+//                    color_name="CRT";
+//                }
+//                else if (country.getLabel().toString().equals("DARK GREEN"))
+//                {
+//                    color_name="D GRN";
+//                }
+//                else if (country.getLabel().toString().equals("DEEP ROSE"))
+//                {
+//                    color_name="D ROSE";
+//                }
+//                else if (country.getLabel().toString().equals("DARK STEEL BLUE"))
+//                {
+//                    color_name="D S BLU";
+//                }
+//                else if (country.getLabel().toString().equals("DARK VOILET"))
+//                {
+//                    color_name="D VLT";
+//                }
+//                else if (country.getLabel().toString().equals("DARK BEIGE"))
+//                {
+//                    color_name="D-BAIG";
+//                }
+//                else if (country.getLabel().toString().equals("DARK BLUE"))
+//                {
+//                    color_name="D-BLU";
+//                }
+//                else if (country.getLabel().toString().equals("DARK PINK"))
+//                {
+//                    color_name="D-PINK";
+//                }
+//                else if (country.getLabel().toString().equals("DARK BLACK"))
+//                {
+//                    color_name="DBLK";
+//                }
+//                else if (country.getLabel().toString().equals("DARK BROWN"))
+//                {
+//                    color_name="DBRN";
+//                }
+//                else if (country.getLabel().toString().equals("DARK CHARCOLE"))
+//                {
+//                    color_name="DCHRCL";
+//                }
+//                else if (country.getLabel().toString().equals("DARK GREY"))
+//                {
+//                    color_name="DGRY";
+//                }
+//                else if (country.getLabel().toString().equals("DUSTY ROSE"))
+//                {
+//                    color_name="DUSTY ROSE";
+//                }
+//                else if (country.getLabel().toString().equals("ELECTRIC BLUE"))
+//                {
+//                    color_name="ELECT BLU";
+//                }
+//                else if (country.getLabel().toString().equals("FEROZI"))
+//                {
+//                    color_name="FEROZI";
+//                }
+//                else if (country.getLabel().toString().equals("FUSHIA"))
+//                {
+//                    color_name="FSHIA";
+//                }
+//                else if (country.getLabel().toString().equals("GREY BLUE"))
+//                {
+//                    color_name="G BLUE";
+//                }
+//                else if (country.getLabel().toString().equals("GREY BROWN"))
+//                {
+//                    color_name="G BRN";
+//                }
+//                else if (country.getLabel().toString().equals("GREY BROWN"))
+//                {
+//                    color_name="G BRN";
+//                }
+//                else if (country.getLabel().toString().equals("GREY COATED"))
+//                {
+//                    color_name="G CTD";
+//                }
+//                else if (country.getLabel().toString().equals("GOLDEN YELLOW"))
+//                {
+//                    color_name="G YEL";
+//                }
+//                else if (country.getLabel().toString().equals("GREEN COATED"))
+//                {
+//                    color_name="G-CTD";
+//                }
+//                else if (country.getLabel().toString().equals("GOLDEN"))
+//                {
+//                    color_name="GLDN";
+//                }
+//                else if (country.getLabel().toString().equals("GREEN"))
+//                {
+//                    color_name="GRN";
+//                }
+//                else if (country.getLabel().toString().equals("GREY"))
+//                {
+//                    color_name="GRY";
+//                }
+//                else if (country.getLabel().toString().equals("GUN METAL"))
+//                {
+//                    color_name="GUN";
+//                }
+//                else if (country.getLabel().toString().equals("HEATHER GREY"))
+//                {
+//                    color_name="HGRY";
+//                }
+//                else if (country.getLabel().toString().equals("INDIGO"))
+//                {
+//                    color_name="INDG";
+//                }
+//                else if (country.getLabel().toString().equals("JET BLACK"))
+//                {
+//                    color_name="J-BLK";
+//                }
+//                else if (country.getLabel().toString().equals("KHAKI"))
+//                {
+//                    color_name="KHK";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT GREY"))
+//                {
+//                    color_name="L GREY";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT PURPLE"))
+//                {
+//                    color_name="L PUP";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT BLUE"))
+//                {
+//                    color_name="L-BLU";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT PINK"))
+//                {
+//                    color_name="L-PINK";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT BLACK"))
+//                {
+//                    color_name="LBLK";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT BROWN"))
+//                {
+//                    color_name="LBRN";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT CHARCOLE"))
+//                {
+//                    color_name="LCHRCL";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT GREEN"))
+//                {
+//                    color_name="LGRN";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT GREY"))
+//                {
+//                    color_name="LGRY";
+//                }
+//                else if (country.getLabel().toString().equals("LIME"))
+//                {
+//                    color_name="LIME";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT INDIGO"))
+//                {
+//                    color_name="LINDG";
+//                }
+//                else if (country.getLabel().toString().equals("LEMON"))
+//                {
+//                    color_name="LMN";
+//                }
+//                else if (country.getLabel().toString().equals("LIGHT ORANGE"))
+//                {
+//                    color_name="LORG";
+//                }
+//                else if (country.getLabel().toString().equals("MEDIUM GREY"))
+//                {
+//                    color_name="M GREY";
+//                }
+//                else if (country.getLabel().toString().equals("MEDIUM BLUE"))
+//                {
+//                    color_name="M/BLU";
+//                }
+//                else if (country.getLabel().toString().equals("MAJANTA"))
+//                {
+//                    color_name="MAJNDA";
+//                }
+//                else if (country.getLabel().toString().equals("MID BLACK"))
+//                {
+//                    color_name="MBLK";
+//                }
+//                else if (country.getLabel().toString().equals("MIX COLOR"))
+//                {
+//                    color_name="MIX";
+//                }
+//                else if (country.getLabel().toString().equals("MALON"))
+//                {
+//                    color_name="MLN";
+//                }
+//                else if (country.getLabel().toString().equals("MULTI COLOR"))
+//                {
+//                    color_name="MLT";
+//                }
+//                else if (country.getLabel().toString().equals("MAROON"))
+//                {
+//                    color_name="MRN";
+//                }
+//                else if (country.getLabel().toString().equals("MUSTARD"))
+//                {
+//                    color_name="MSTRD";
+//                }
+//                else if (country.getLabel().toString().equals("NAVY BLUE"))
+//                {
+//                    color_name="NBLU";
+//                }
+//                else if (country.getLabel().toString().equals("NAVY BLUE"))
+//                {
+//                    color_name="NBLU";
+//                }
+//                else if (country.getLabel().toString().equals("NO COLOR"))
+//                {
+//                    color_name="NILL";
+//                }
+//                else if (country.getLabel().toString().equals("OLIVE GREEN"))
+//                {
+//                    color_name="OGRN";
+//                }
+//                else if (country.getLabel().toString().equals("OLIVE GREY"))
+//                {
+//                    color_name="OGRY";
+//                }
+//                else if (country.getLabel().toString().equals("ORANGE"))
+//                {
+//                    color_name="ORG";
+//                }
+//                else if (country.getLabel().toString().equals("OFF WHITE"))
+//                {
+//                    color_name="OWHT";
+//                }
+//                else if (country.getLabel().toString().equals("PEACH"))
+//                {
+//                    color_name="PEACH";
+//                }
+//                else if (country.getLabel().toString().equals("PISTASHU"))
+//                {
+//                    color_name="PISTASHU";
+//                }
+//                else if (country.getLabel().toString().equals("PINK"))
+//                {
+//                    color_name="PNK";
+//                }
+//                else if (country.getLabel().toString().equals("PARROT"))
+//                {
+//                    color_name="PRT";
+//                }
+//                else if (country.getLabel().toString().equals("Purple"))
+//                {
+//                    color_name="PUP";
+//                }
+//                else if (country.getLabel().toString().equals("PURPLE"))
+//                {
+//                    color_name="PUP";
+//                }
+//                else if (country.getLabel().toString().equals("ROYAL BLUE"))
+//                {
+//                    color_name="R BLU";
+//                }
+//                else if (country.getLabel().toString().equals("RASBERRY ROSE"))
+//                {
+//                    color_name="RBROSE";
+//                }
+//                else if (country.getLabel().toString().equals("RED"))
+//                {
+//                    color_name="RED";
+//                }
+//                else if (country.getLabel().toString().equals("RED PEACH"))
+//                {
+//                    color_name="RPEACH";
+//                }
+//                else if (country.getLabel().toString().equals("RUST"))
+//                {
+//                    color_name="RST";
+//                }
+//                else if (country.getLabel().toString().equals("SILVER BLACK"))
+//                {
+//                    color_name="S BLK";
+//                }
+//                else if (country.getLabel().toString().equals("SEA GREEN"))
+//                {
+//                    color_name="S GRN";
+//                }
+//                else if (country.getLabel().toString().equals("SILVER WHITE"))
+//                {
+//                    color_name="S WHT";
+//                }
+//                else if (country.getLabel().toString().equals("SHALLOW ASH"))
+//                {
+//                    color_name="SHLW";
+//                }
+//                else if (country.getLabel().toString().equals("SKY BLUE"))
+//                {
+//                    color_name="SKBLU";
+//                }
+//                else if (country.getLabel().toString().equals("SKIN"))
+//                {
+//                    color_name="SKN";
+//                }
+//                else if (country.getLabel().toString().equals("SILVER"))
+//                {
+//                    color_name="SLV";
+//                }
+//                else if (country.getLabel().toString().equals("SILVER BLACK"))
+//                {
+//                    color_name="SLVBLK";
+//                }
+//                else if (country.getLabel().toString().equals("SILVER STEEL"))
+//                {
+//                    color_name="SLVR";
+//                }
+//                else if (country.getLabel().toString().equals("SNAKE BLACK"))
+//                {
+//                    color_name="SNKBLK";
+//                }
+//                else if (country.getLabel().toString().equals("TWIT BLUE"))
+//                {
+//                    color_name="T / BLU";
+//                }
+//                else if (country.getLabel().toString().equals("TINTED BLUE"))
+//                {
+//                    color_name="T BLUE";
+//                }
+//                else if (country.getLabel().toString().equals("Tea Pink"))
+//                {
+//                    color_name="T-PNK";
+//                }
+//                else if (country.getLabel().toString().equals("TEAL BEIGE"))
+//                {
+//                    color_name="TBAIG";
+//                }
+//                else if (country.getLabel().toString().equals("TEAL"))
+//                {
+//                    color_name="TEAL";
+//                }
+//                else if (country.getLabel().toString().equals("TEAL GREEN"))
+//                {
+//                    color_name="TLGRN";
+//                }
+//                else if (country.getLabel().toString().equals("TURQAISH"))
+//                {
+//                    color_name="TURQ";
+//                }
+//                else if (country.getLabel().toString().equals("VINTAGE GREEN"))
+//                {
+//                    color_name="VGRN";
+//                }
+//                else if (country.getLabel().toString().equals("VOILET"))
+//                {
+//                    color_name="VLT";
+//                }
+//                else if (country.getLabel().toString().equals("WHITE"))
+//                {
+//                    color_name="WHT";
+//                }
+//                else if (country.getLabel().toString().equals("WHITE ROSE"))
+//                {
+//                    color_name="WHT ROSE";
+//                }
+//                else if (country.getLabel().toString().equals("YELLOW"))
+//                {
+//                    color_name="YEL";
+//                }
+//                else if (country.getLabel().toString().equals("ZINK"))
+//                {
+//                    color_name="ZINK";
+//                }
+//                else {
+//                    color_name = country.getLabel().toString();
+//                }
 //                Toast.makeText(context, "Country ID: "+country.getId()+",  Country Name : "+country.getName(), Toast.LENGTH_SHORT).show();
             }
 
@@ -292,7 +816,7 @@ public class Product_Details extends AppCompatActivity {
                     {
 //                      tv_aval.setText("Out Of Stock");
                         tv_aval.setText("Out Of Stock");
-                        tv_aval.setTextColor(R.color.red);
+                        tv_aval.setTextColor(getResources().getColor(R.color.red));
                         Buy.setEnabled(false);
                         ed_qty.setVisibility(View.GONE);
                         s_color.setVisibility(View.GONE);
@@ -433,6 +957,7 @@ public class Product_Details extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "This Product is Out of stock" , Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -647,7 +1172,7 @@ public class Product_Details extends AppCompatActivity {
 
 
 
-                    }else if (atr_id.equals("144"))
+                    }else if (atr_id.equals("135"))
                     {
                         JSONArray value=attribute1.getJSONArray("values");
                         for (int j=0;j<value.length();j++)
@@ -690,7 +1215,7 @@ public class Product_Details extends AppCompatActivity {
                         s_color.setAdapter(adapter);
 
 
-                    }else if (atr_id2.equals("144"))
+                    }else if (atr_id2.equals("135"))
                     {
                         JSONArray value=attribute2.getJSONArray("values");
                         for (int j=0;j<value.length();j++)

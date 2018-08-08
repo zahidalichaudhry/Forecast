@@ -23,11 +23,11 @@
             android:hint="Name"
             android:padding="15dp"
             android:gravity="center"
-            android:textSize="16dp" />
+            android:textSize="40sp" />
     <View
         android:layout_width="match_parent"
         android:background="@color/green"
-        android:layout_height="1dp">
+        android:layout_height="5dp">
     </View>
 </LinearLayout>
 

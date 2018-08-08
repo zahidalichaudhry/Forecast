@@ -256,7 +256,7 @@ public class Check_Out extends AppCompatActivity {
                 editor.putString(Config.SHARED_PREF_CART_NO, null);
                 editor.clear();
                 editor.apply();
-                Intent intent =new Intent(Check_Out.this,Home_Catogeries.class);
+                Intent intent =new Intent(Check_Out.this,Starting.class);
                 startActivity(intent);
             }
         });
@@ -369,6 +369,16 @@ public class Check_Out extends AppCompatActivity {
     /////////////////END/////////////////////////////////////
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //Getting out sharedpreferences
+        SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_CART_NO, Context.MODE_PRIVATE);
+        //Getting editor
+        SharedPreferences.Editor editor = preferences.edit();
+
+        //Putting blank value to email
+        editor.putString(Config.SHARED_PREF_CART_NO, null);
+        editor.clear();
+        editor.apply();
+        Intent intent =new Intent(Check_Out.this,Starting.class);
+        startActivity(intent);
     }
 }

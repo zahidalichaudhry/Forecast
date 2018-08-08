@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zahidali.forecast_final">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/fc"
@@ -13,7 +14,9 @@
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.Login" />
         <activity android:name=".Activity.Sing_up" />
-        <activity android:name=".Activity.Splash_Screen">
+        <activity
+            android:name=".Activity.Splash_Screen"
+            android:screenOrientation="portrait">
             //////////////Launcher//////////
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,15 +25,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".NaviDrawer" />
-        <activity android:name=".Activity.Home_Catogeries" />
-        <activity android:name=".Activity.Sub_Categories" />
-        <activity android:name=".Activity.All_Products" />
-        <activity android:name=".Activity.Product_Details" />
-        <activity android:name=".Activity.Web_View" />
+        <activity
+            android:name=".Activity.Home_Catogeries"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.Sub_Categories"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.All_Products"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.Product_Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.Web_View"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Check_Out"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".Activity.MyCart">
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activity.MyCart"
+            android:screenOrientation="portrait">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -39,8 +54,13 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".Activity.Order_Details" />
-        <activity android:name=".Activity.FullScreenImage"></activity>
+        <activity
+            android:name=".Activity.Order_Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.FullScreenImage"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.Starting"></activity>
     </application>
 
 </manifest>

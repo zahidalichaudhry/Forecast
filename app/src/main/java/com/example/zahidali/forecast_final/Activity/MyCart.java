@@ -48,7 +48,7 @@ public class MyCart extends AppCompatActivity {
     String cart_no=null;
     String grand,grand2,discount;
     int b,c;
-    float d=150,e;
+    float d=0,e;
     TextView all_total;
     Button chek;
     @Override

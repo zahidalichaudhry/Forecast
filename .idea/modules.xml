@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Forecast_Final.iml" filepath="$PROJECT_DIR$/Forecast_Final.iml" />
-      <module fileurl="file://C:\Users\User\Desktop\Forecast_Final2\Forecast_Final.iml" filepath="C:\Users\User\Desktop\Forecast_Final2\Forecast_Final.iml" />
-      <module fileurl="file://D:\Internship\Forecast_Final\.idea\Forecast_Final.iml" filepath="D:\Internship\Forecast_Final\.idea\Forecast_Final.iml" />
-      <module fileurl="file://C:\Users\Mahek\Downloads\Forecast_Final\Forecast_Final.iml" filepath="C:\Users\Mahek\Downloads\Forecast_Final\Forecast_Final.iml" />
-      <module fileurl="file://D:\Internship\Forecast_Final\Forecast_Final2.iml" filepath="D:\Internship\Forecast_Final\Forecast_Final2.iml" />
+      <module fileurl="file://C:/Users/User/Desktop/Forecast_Final2/Forecast_Final.iml" filepath="C:/Users/User/Desktop/Forecast_Final2/Forecast_Final.iml" />
+      <module fileurl="file://C:/Users/Mahek/Downloads/Forecast_Final/Forecast_Final.iml" filepath="C:/Users/Mahek/Downloads/Forecast_Final/Forecast_Final.iml" />
+      <module fileurl="file://D:/Internship/Forecast_Final/.idea/Forecast_Final.iml" filepath="D:/Internship/Forecast_Final/.idea/Forecast_Final.iml" />
+      <module fileurl="file://D:/Internship/Forecast_Final/Forecast_Final2.iml" filepath="D:/Internship/Forecast_Final/Forecast_Final2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

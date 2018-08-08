@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="6dp"
-        android:background="@drawable/button_back"
+        android:background="@color/grey"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -24,14 +24,13 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/jumbo"
+            android:textColor="@color/white"
             android:text="ORDER ID:"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textStyle="bold|italic"
-            android:textColor="@color/jumbo"
+            android:textColor="@color/white"
             android:id="@+id/code"
             />
     </LinearLayout>

@@ -16,14 +16,14 @@ public class Config {
 
 ///////////////Home PAGE Pics////////////////
 
-    public static final String BANNER1 = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/banner1.jpg";
-    public static final String BANNER2 = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/banner3.jpg";
-    public static final String BANNER3 = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/banner2.jpg";
+    public static final String BANNER1 = "http://forecast.com.pk/media/wysiwyg/mobile/banner1.jpg";
+    public static final String BANNER2 = "http://forecast.com.pk/media/wysiwyg/mobile/banner2.jpg";
+    public static final String BANNER3 = "http://forecast.com.pk/media/wysiwyg/mobile/banner3.jpg";
 
-    public static final String HOME_MEN = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/mens.jpg";
-    public static final String HOME_WOMEN = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/womens.jpg";
-    public static final String HOME_FOOTWARE = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/footware.jpg";
-    public static final String HOMW_SALE = "http://www.forecast.com.pk/media/wysiwyg/porto/mobile/sale.jpg";
+    public static final String HOME_MEN = "http://forecast.com.pk/media/wysiwyg/mobile/men.jpg";
+    public static final String HOME_WOMEN = "http://forecast.com.pk/media/wysiwyg/mobile/women.jpg";
+    public static final String HOME_FOOTWARE = "http://forecast.com.pk/media/wysiwyg/mobile/kids.png";
+    public static final String HOMW_SALE = "http://forecast.com.pk/media/wysiwyg/mobile/sale.png";
 /////////////////////////////////END///////////////////////
     public static final String SHARED_PREF_NAME = "forecast";
 
@@ -75,4 +75,13 @@ public class Config {
     public static final String POSTALCODE = "postcode";
     public static final String COUNTRY = "country_id";
     public static final String PHONE = "telephone";
+    ////////////////////////////////starting Page///////////////////////
+    public static final String Staringnew = "http://forecast.com.pk/media/wysiwyg/mobile/newarrival.png";
+    public static final String Staringmen = "http://forecast.com.pk/media/wysiwyg/mobile/men.png";
+    public static final String Staringwomen = "http://forecast.com.pk/media/wysiwyg/mobile/women.png";
+    public static final String Staringkids = "http://forecast.com.pk/media/wysiwyg/mobile/kids.png";
+    public static final String Staringshoes = "http://forecast.com.pk/media/wysiwyg/mobile/footwear.png";
+    public static final String Staringhome = "http://forecast.com.pk/media/wysiwyg/mobile/home.png";
+
+
 }

@@ -21,10 +21,10 @@
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="450dp" />
             <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="200dp"-->
+                <!--android:layout_height="400dp"-->
                 <!--android:gravity="center"-->
                 <!--android:padding="2dp"-->
                 <!--android:weightSum="2"-->
@@ -32,8 +32,8 @@
                 <!--<ImageView-->
                     <!--android:id="@+id/men"-->
                     <!--android:layout_width="match_parent"-->
-                    <!--android:layout_weight="1"-->
                     <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
                     <!--android:layout_gravity="center" />-->
 
                 <!--<ImageView-->
@@ -46,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:gravity="center"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
             android:weightSum="2"
             android:orientation="horizontal">
             <ImageView
@@ -57,8 +57,8 @@
                 android:layout_gravity="center" />
             <ImageView
                 android:id="@+id/baji"
-                android:layout_width="match_parent"
                 android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center" />
 
@@ -67,7 +67,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:textSize="22sp"
+    android:textSize="35sp"
     android:layout_margin="10dp"
     android:fontFamily="@font/gotham_book"
     android:textColor="@color/grey"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/new_a"
-
+                android:textSize="30sp"
                 android:textColor="@color/green"
                 android:fontFamily="@font/gotham_book"
                 android:text="Please Wait......."/>
@@ -88,13 +88,13 @@
                 android:orientation="horizontal" >
 
                 <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/model_recyclerView"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:orientation="horizontal"
-                    android:scrollbars="horizontal"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             >
                     <!--android:orientation="horizontal"-->
